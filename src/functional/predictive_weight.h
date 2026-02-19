@@ -7,7 +7,12 @@
 #include "../eeprom_data/eeprom_data.h"
 
 extern int preInfusionFinishedPhaseIdx;
-constexpr float crossSectionalArea = 0.0026f; // avg puck crossectional area.
+#if defined (PORTAFILTER_51MM)
+  constexpr float crossSectionalArea = 0.0020f; // avg puck crossectional area.
+#else
+  constexpr float crossSectionalArea = 0.0026f; // avg puck crossectional area.
+#endif
+
 constexpr float dynamicViscosity = 0.0002964f; // avg water dynamic viscosity at 90-95 celsius.
 bool predictiveTargetReached = false;
 int predictivePreinfusionFinishedCheck = 0.f;
