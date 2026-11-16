@@ -13,3 +13,4 @@ extra_defines.ini
 *.HMI.*.bak
 *.tft.*.bak
 .hmi-renders/
+build/

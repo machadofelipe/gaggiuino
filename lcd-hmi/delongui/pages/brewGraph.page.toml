@@ -22,13 +22,13 @@ dir = 1
 ch = 4
 bco = "#0D1117"
 gdc = 6438
-gdw = 47
-gdh = 27
+gdw = 40
+gdh = 25
 pco0 = 62689
 pco1 = 1466
 pco2 = 5584
-pco3 = 59944
-dis = 140
+pco3 = 10985
+dis = 125
 molloc_s = 1728
 molloc = 1728
 
@@ -71,47 +71,33 @@ lockobj = 1
 pic = "badge_brewing"
 
 [[component]]
-name = "n1"
+name = "n0"
 type = "number"
-x = 150
+x = 140
 y = 5
-w = 32
+w = 60
 h = 26
 lockobj = 1
 font = "ui26"
 bco = "#141B24"
 pco = "#F3F4F6"
 xcen = 2
-lenth = 2
+lenth = 0
 
 [[component]]
 name = "time_seconds"
 type = "text"
-x = 182
-y = 5
-w = 12
-h = 26
+x = 202
+y = 10
+w = 16
+h = 20
 lockobj = 1
-font = "ui26"
+font = "ui20"
 bco = "#141B24"
-pco = "#38BDF8"
-xcen = 1
-txt = ":"
-txt_maxl = 4
-
-[[component]]
-name = "n0"
-type = "number"
-x = 194
-y = 5
-w = 32
-h = 26
-lockobj = 1
-font = "ui26"
-bco = "#141B24"
-pco = "#F3F4F6"
+pco = "#9CA3AF"
 xcen = 0
-lenth = 2
+txt = "s"
+txt_maxl = 4
 
 [[component]]
 name = "pressure"
@@ -184,6 +170,10 @@ name = "timerVar"
 type = "variable"
 
 [[component]]
+name = "tgtW"
+type = "variable"
+
+[[component]]
 name = "dNr"
 type = "text"
 x = 318
@@ -198,7 +188,7 @@ txt = "0"
 [[component]]
 name = "tm0"
 type = "timer"
-tim = 220
+tim = 250
 
 [[component]]
 name = "brewTimer"

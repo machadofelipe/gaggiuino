@@ -272,7 +272,7 @@ pic2 = "btn58_sec_dn"
 font = "ui12"
 pco = "#F3F4F6"
 pco2 = "#0D1117"
-txt = "1 PI"
+txt = "PI"
 
 [[component]]
 name = "bJSk"
@@ -288,7 +288,7 @@ pic2 = "btn58_sec_dn"
 font = "ui12"
 pco = "#F3F4F6"
 pco2 = "#0D1117"
-txt = "2 SK"
+txt = "Soak"
 
 [[component]]
 name = "bJTr"
@@ -304,7 +304,7 @@ pic2 = "btn58_sec_dn"
 font = "ui12"
 pco = "#F3F4F6"
 pco2 = "#0D1117"
-txt = "3 TR"
+txt = "Trans"
 
 [[component]]
 name = "bJPf"
@@ -320,7 +320,7 @@ pic2 = "btn58_sec_dn"
 font = "ui12"
 pco = "#F3F4F6"
 pco2 = "#0D1117"
-txt = "4 PF"
+txt = "Main"
 
 [[component]]
 name = "bSav"
@@ -453,3 +453,8 @@ type = "variable"
 sta = 1
 txt_maxl = 16
 txt = ""
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

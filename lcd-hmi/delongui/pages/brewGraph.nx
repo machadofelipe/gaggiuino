@@ -58,7 +58,10 @@ on tm0.timer:
     add 1,0,pressure.val
     add 1,1,flow.val
     add 1,2,va0.val
-    add 1,3,currentTemp
+    if (shotState == 1 && shotTarget > 0) {
+      tgtW.val = shotTarget / 10
+      add 1,3,tgtW.val
+    }
     p0.pic = @pic(badge_brewing)
     vis p0,1
   } else {
@@ -103,8 +106,7 @@ on tm0.timer:
 
 on brewTimer.timer:
   if (timerState == 1) {
-    n0.val = activeBrewTime % 60
-    n1.val = activeBrewTime / 60
+    n0.val = activeBrewTime
   }
 
 on mode_timer.timer:

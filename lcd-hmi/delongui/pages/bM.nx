@@ -4,7 +4,7 @@ on bM.load:
   descaleState = 0
   ppManualState = 1
   n1.val = currentTemp
-  h0.val = h0.minval
+  h0.val = manFlow
   mlPerSec.val = h0.val
   vaTick.val = 0
   vaSec.val = 0
@@ -49,24 +49,29 @@ on bM.unload:
   popupMSG.returnid.val = dp
 
 on b2.up:
+  manFlow = 0
   ppManualState = 0
   flushState = 0
   descaleState = 0
   page home
 
 on b0.up:
+  manFlow = 0
   ppManualState = 0
   flushState = 1
   page cleanFlush
 
 on h0.down:
   mlPerSec.val = h0.val
+  manFlow = h0.val
 
 on h0.up:
   mlPerSec.val = h0.val
+  manFlow = h0.val
 
 on h0.slide:
   mlPerSec.val = h0.val
+  manFlow = h0.val
 
 on bFlM.up:
   if (h0.val >= 2) {
@@ -75,6 +80,7 @@ on bFlM.up:
     h0.val = 0
   }
   mlPerSec.val = h0.val
+  manFlow = h0.val
 
 on bFlP.up:
   if (h0.val <= 128) {
@@ -83,6 +89,7 @@ on bFlP.up:
     h0.val = 130
   }
   mlPerSec.val = h0.val
+  manFlow = h0.val
 
 on tm0.timer:
   if (timerState == 1) {

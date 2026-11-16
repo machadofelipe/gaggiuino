@@ -61,7 +61,7 @@ lockobj = 1
 sta = 2
 pic = "tab76_flow_on"
 font = "ui14"
-pco = "#0D1117"
+pco = "#F3F4F6"
 xcen = 1
 txt = "CLEAN"
 

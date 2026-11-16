@@ -102,8 +102,8 @@ The STM32 firmware in `src/lcd/lcd.h`, `src/lcd/nextion.cpp`, and `src/gaggiuino
 
 ### 3. Watch Per-Page Memory Limits (`3584` bytes max)
 `./scripts/hmi.sh build` prints each page's RAM usage. On `delongui`, some pages are already close to the `3584`-byte Nextion page limit:
-- `brewGraph`: `3520 / 3584` bytes (**only 64 bytes free**)
-- `graphPreview`: `3400 / 3584` bytes (184 bytes free)
+- `brewGraph`: `3100 / 3584` bytes (484 bytes free)
+- `sk`: `2580 / 3584` bytes
 - `dS`: `2700 / 3584` bytes
 
 Keep component names/attributes lean on `brewGraph` and `graphPreview` and verify `./scripts/hmi.sh check` / `build` after every edit.
@@ -148,3 +148,26 @@ This prints every visible component's bounding box/text and writes `.hmi-renders
   ./scripts/hmi.sh ports
   ./scripts/hmi.sh upload /dev/ttyUSB0 --upload-baud 921600
   ```
+
+## Tooling (`tools/hmi/`)
+
+Run these with nxwright's Python (`PY=$(head -1 "$(command -v nxwright)" | cut -c3-)`), which already has Pillow and the headless simulator.
+
+| Script | Purpose |
+| --- | --- |
+| `gen_assets.py` | Renders every bitmap (buttons, tabs, cards, gauge rings, brew-graph chrome) into `build/hmi-assets/`. Re-running it unchanged reproduces the committed `pictures/` pixel for pixel. |
+| `sync_assets.py [--check]` | Copies changed PNGs into `lcd-hmi/delongui/pictures/` and appends new ones to `app.toml` (after `picture-0099`, so the numeric ring indices stay fixed). |
+| `check_keypad_ids.py` | Resolves every `keybdB.nx` clamp `(page, component id)` to a component name and fails on id drift or an unclamped editable field. |
+| `verify_hmi.py` | Headless behavioural suite (navigation, keypad clamps, tab persistence, steam mode, manual brew, popups) plus a contact sheet in `build/hmi-verify/`. |
+| `capture_screens.py` | Renders all 23 screens/states to JSON + PNG with reading-order hover IDs. |
+| `probe_bugs.py` | Reproduces the review's functional bugs on two builds side by side. |
+| `build_review_page.py` / `compare.sh` | Builds `docs/delongui-hmi-review.html` (Original vs Gemini vs working tree) and `docs/hmi-review.md` from `review_findings.py`. |
+
+Typical bitmap change:
+
+```bash
+$PY tools/hmi/gen_assets.py && $PY tools/hmi/sync_assets.py
+./scripts/hmi.sh check && $PY tools/hmi/check_keypad_ids.py && $PY tools/hmi/verify_hmi.py
+./scripts/hmi.sh all
+```
+

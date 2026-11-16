@@ -94,7 +94,7 @@ sta = 2
 pic = "tab68_on"
 pic2 = "tab68_dn"
 font = "ui14"
-pco = "#0D1117"
+pco = "#F3F4F6"
 pco2 = "#F3F4F6"
 txt = "4 Main"
 
@@ -556,7 +556,7 @@ pic2 = "btn98_sec_dn"
 font = "ui14"
 pco = "#F3F4F6"
 pco2 = "#38BDF8"
-txt = "More"
+txt = "Options"
 
 [[component]]
 name = "b4"
@@ -603,3 +603,7 @@ lockobj = 1
 name = "tm0"
 type = "timer"
 tim = 50
+
+[[component]]
+name = "syncTicks"
+type = "variable"

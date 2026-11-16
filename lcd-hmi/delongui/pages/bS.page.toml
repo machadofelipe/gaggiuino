@@ -235,3 +235,8 @@ pic = "sw_off"
 pic2 = "sw_on"
 txt = ""
 font = "ui12"
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

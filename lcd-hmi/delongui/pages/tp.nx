@@ -75,6 +75,7 @@ on Type.up:
   paType = Type.val
   printh 23 02 54 06
   click refUI,0
+  syncTicks.val = 20
 
 on tabRamp.up:
   viewMode.val = 0
@@ -88,18 +89,18 @@ on refUI.up:
   if (paType == 0) {
     pStartTxt.txt = "START (bar)"
     pEndTxt.txt = "END (bar)"
-    pLimTxt.txt = "FLOW LIM (ml/s)"
-    hLimTxt.txt = "HOLD LIM (ml/s)"
+    pLimTxt.txt = "FLOW (ml/s)"
+    hLimTxt.txt = "FLOW (ml/s)"
   } else {
     pStartTxt.txt = "START (ml/s)"
     pEndTxt.txt = "END (ml/s)"
-    pLimTxt.txt = "PRESS LIM (bar)"
-    hLimTxt.txt = "HOLD LIM (bar)"
+    pLimTxt.txt = "PRESS (bar)"
+    hLimTxt.txt = "PRESS (bar)"
   }
   if (viewMode.val == 0) {
-    tabRamp.pic = @pic(sub68_on)
+    tabRamp.pic = @pic(sub50_on)
     tabRamp.pco = 2178
-    tabHold.pic = @pic(sub74_off)
+    tabHold.pic = @pic(sub50_off)
     tabHold.pco = 40213
     vis tStartBg,1
     vis pStartTxt,1
@@ -131,17 +132,18 @@ on refUI.up:
     vis bHlM,0
     vis bHlP,0
     vis hLim,0
-    vis crvBg,0
-    vis tCrv,0
-    vis pfEaseInOut,0
-    vis pfEaseIn,0
-    vis pfEaseOut,0
-    vis pfLinear,0
-    vis pfInstant,0
+    vis crvBg,1
+    vis tCrv,1
+    vis pfEaseInOut,1
+    vis pfEaseIn,1
+    vis pfEaseOut,1
+    vis pfLinear,1
+    vis pfInstant,1
+    vis holdDiag,0
   } else {
-    tabHold.pic = @pic(sub74_on)
+    tabHold.pic = @pic(sub50_on)
     tabHold.pco = 2178
-    tabRamp.pic = @pic(sub68_off)
+    tabRamp.pic = @pic(sub50_off)
     tabRamp.pco = 40213
     vis tStartBg,0
     vis pStartTxt,0
@@ -173,13 +175,14 @@ on refUI.up:
     vis bHlM,1
     vis bHlP,1
     vis hLim,1
-    vis crvBg,1
-    vis tCrv,1
-    vis pfEaseInOut,1
-    vis pfEaseIn,1
-    vis pfEaseOut,1
-    vis pfLinear,1
-    vis pfInstant,1
+    vis crvBg,0
+    vis tCrv,0
+    vis pfEaseInOut,0
+    vis pfEaseIn,0
+    vis pfEaseOut,0
+    vis pfLinear,0
+    vis pfInstant,0
+    vis holdDiag,1
   }
   pfEaseIn.val = 0
   pfEaseOut.val = 0
@@ -205,18 +208,20 @@ on refUI.up:
     tHdLbl.pco = 17069
     hLimTxt.pco = 17069
     tCrv.pco = 17069
+    lblEn.pco = 17069
+    holdDiag.pic = @pic(tp_hold_diag_dim)
     tStart.pco = 17069
     tEnd.pco = 17069
     tSlope.pco = 17069
     tLim.pco = 17069
     tHold.pco = 17069
     hLim.pco = 17069
-    tStart.pic = @pic(well_82x27_dim)
-    tEnd.pic = @pic(well_82x27_dim)
-    tSlope.pic = @pic(well_82x27_dim)
-    tLim.pic = @pic(well_82x27_dim)
-    tHold.pic = @pic(well_82x28_dim)
-    hLim.pic = @pic(well_82x28_dim)
+    tStart.pic = @pic(well_56x27_dim)
+    tEnd.pic = @pic(well_56x27_dim)
+    tSlope.pic = @pic(well_56x27_dim)
+    tLim.pic = @pic(well_56x27_dim)
+    tHold.pic = @pic(well_56x27_dim)
+    hLim.pic = @pic(well_56x27_dim)
     bStM.pic = @pic(step34_m_dim)
     bStP.pic = @pic(step34_p_dim)
     bEnM.pic = @pic(step34_m_dim)
@@ -225,10 +230,10 @@ on refUI.up:
     bSlP.pic = @pic(step34_p_dim)
     bLmM.pic = @pic(step34_m_dim)
     bLmP.pic = @pic(step34_p_dim)
-    bHdM.pic = @pic(step_m_dim)
-    bHdP.pic = @pic(step_p_dim)
-    bHlM.pic = @pic(step_m_dim)
-    bHlP.pic = @pic(step_p_dim)
+    bHdM.pic = @pic(step34_m_dim)
+    bHdP.pic = @pic(step34_p_dim)
+    bHlM.pic = @pic(step34_m_dim)
+    bHlP.pic = @pic(step34_p_dim)
     pfEaseInOut.pic = @pic(crv22_0_dim)
     pfEaseInOut.pic2 = @pic(crv22_0_dim_on)
     pfEaseIn.pic = @pic(crv22_1_dim)
@@ -270,6 +275,8 @@ on refUI.up:
     tHdLbl.pco = 40213
     hLimTxt.pco = 40213
     tCrv.pco = 40213
+    lblEn.pco = 40213
+    holdDiag.pic = @pic(tp_hold_diag)
     if (paType == 0) {
       tStart.pco = 62689
       tEnd.pco = 62689
@@ -283,12 +290,12 @@ on refUI.up:
     }
     tSlope.pco = 15871
     tHold.pco = 15871
-    tStart.pic = @pic(well_82x27)
-    tEnd.pic = @pic(well_82x27)
-    tSlope.pic = @pic(well_82x27)
-    tLim.pic = @pic(well_82x27)
-    tHold.pic = @pic(well_82x28)
-    hLim.pic = @pic(well_82x28)
+    tStart.pic = @pic(well_56x27)
+    tEnd.pic = @pic(well_56x27)
+    tSlope.pic = @pic(well_56x27)
+    tLim.pic = @pic(well_56x27)
+    tHold.pic = @pic(well_56x27)
+    hLim.pic = @pic(well_56x27)
     bStM.pic = @pic(step34_m_up)
     bStP.pic = @pic(step34_p_up)
     bEnM.pic = @pic(step34_m_up)
@@ -297,10 +304,10 @@ on refUI.up:
     bSlP.pic = @pic(step34_p_up)
     bLmM.pic = @pic(step34_m_up)
     bLmP.pic = @pic(step34_p_up)
-    bHdM.pic = @pic(step_m_up)
-    bHdP.pic = @pic(step_p_up)
-    bHlM.pic = @pic(step_m_up)
-    bHlP.pic = @pic(step_p_up)
+    bHdM.pic = @pic(step34_m_up)
+    bHdP.pic = @pic(step34_p_up)
+    bHlM.pic = @pic(step34_m_up)
+    bHlP.pic = @pic(step34_p_up)
     pfEaseInOut.pic = @pic(crv22_0_off)
     pfEaseInOut.pic2 = @pic(crv22_0_on)
     pfEaseIn.pic = @pic(crv22_1_off)
@@ -463,4 +470,49 @@ on pfInstant.down:
 on tm0.timer:
   if (timerState == 1) {
     page brewGraph
+  }
+  // Trigger 06 makes the firmware re-upload this page from EEPROM; re-read the
+  // globals it rewrites so the switches never disagree with what will be saved.
+  if (syncTicks.val > 0) {
+    syncTicks.val -= 1
+    if (syncTicks.val == 14 || syncTicks.val == 0) {
+      tEn.val = paState
+      Type.val = paType
+      click refUI,0
+    }
+  }
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
   }

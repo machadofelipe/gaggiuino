@@ -26,6 +26,10 @@ int pfCrv,paCrv
 int graph0,pId,ledNum,ledOn
 int systemUpTime
 int debug1,debug2
+// Profile slot active before a long-press rename (restored on cancel)
+int pIdPrev
+// Manual-brew pump flow target, kept across popup reloads of bM
+int manFlow
 baud = 115200
 bkcmd = 0
 crcrest 1,0xffff

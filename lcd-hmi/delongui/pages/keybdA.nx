@@ -39,6 +39,9 @@ on keybdA.unload:
 
 on b251.up:
   prevPage = dp
+  if (loadpageid.val == 1) {
+    pId = pIdPrev
+  }
   page loadpageid.val
 
 on b210.up:
@@ -79,6 +82,9 @@ on b210.up:
   }
   prevPage = dp
   printh 23 02 54 08
+  if (loadpageid.val == 1) {
+    printh 23 02 54 07
+  }
   page loadpageid.val
 
 on b200.up:

@@ -252,6 +252,7 @@ on tm0.timer:
     longPressCount.val += tm0.tim
     if (longPressCount.val >= 1000) {
       longPressCount.val = 0
+      pIdPrev = pId
       if (downSlot.val > 0) {
         pId = downSlot.val
         downSlot.val = 0
