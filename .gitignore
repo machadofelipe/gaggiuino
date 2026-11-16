@@ -14,3 +14,4 @@ extra_defines.ini
 *.tft.*.bak
 .hmi-renders/
 build/
+__pycache__/
