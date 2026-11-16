@@ -136,10 +136,10 @@ FINDINGS = [
          refs={"C": ["tp.hLim"]}),
     dict(id="N02", sev="medium", status="next", screens=["02"],
          title="Firmware: popups within 1.15 s are dropped",
-         problem="lcdShowPopup ignores any message within 1150 ms of the previous one, so 'Profile switched!' can "
-                 "disappear behind a tank or tare toast.",
-         instruction="Keep the last dropped message in a static buffer and show it when the cooldown expires, "
-                     "instead of discarding it.",
+         problem="lcdShowPopup (src/lcd/nextion.cpp:543-550) ignores any message within 1150 ms of the previous one, "
+                 "so 'Profile switched!' can disappear behind a tank or tare toast (and uses rollover-unsafe `millis() > timer + 1150`).",
+         instruction="Keep the last dropped message in a static buffer and show it when the cooldown expires instead of "
+                     "discarding it, and use `millis() - timer > 1150` with `unsigned long timer`.",
          refs={"C": ["home.qPf1"]}),
     dict(id="N03", sev="medium", status="next", screens=["02"],
          title="Home: the tank level (j0) has no widget",
@@ -178,4 +178,12 @@ FINDINGS = [
          instruction="Flash build output nextion-lcd-delongui.tft (SD, FAT32), then check: touch on tp RAMP/HOLD tabs, "
                      "brew graph scroll at 250 ms, graphPreview draw time < 1 s, steam on/off on sP, and a popup mid manual shot.",
          refs={}),
+    dict(id="N09", sev="high", status="next", screens=["09", "14"],
+         title="Firmware: lcdSetWeight() overflows its stack buffer at >= 100.0 g",
+         problem="src/lcd/nextion.cpp:525-532 formats into `char tmp[6]` with `snprintf(tmp, sizeof(tmp), \"%.1f\", ...)` "
+                 "and checks `check <= sizeof(tmp)` before `strcat(tmp, \"g\")`. For >= 100.0 g (or <= -10.0 g), "
+                 "`check == 5 <= 6`, so `strcat` writes 7 bytes (\"100.0g\\0\") into `tmp[6]` — a 1-byte stack buffer overflow.",
+         instruction="Replace with `char tmp[10]; int check = snprintf(tmp, sizeof(tmp), \"%.1fg\", static_cast<double>(val)); "
+                     "if (check > 0 && static_cast<unsigned int>(check) < sizeof(tmp)) { myNex.writeStr(\"weight.txt\", tmp); }`.",
+         refs={"C": ["bM.weight", "brewGraph.weight"]}),
 ]

@@ -120,8 +120,8 @@ IDs: `G..` = Gemini build (same numbering as the earlier `N..` IDs), `C..` = thi
 ### N02 (medium): Firmware: popups within 1.15 s are dropped
 
 - **Screens:** 02 Home; widgets `C02-05`
-- **Problem:** lcdShowPopup ignores any message within 1150 ms of the previous one, so 'Profile switched!' can disappear behind a tank or tare toast.
-- **Instruction:** Keep the last dropped message in a static buffer and show it when the cooldown expires, instead of discarding it.
+- **Problem:** lcdShowPopup (src/lcd/nextion.cpp:543-550) ignores any message within 1150 ms of the previous one, so 'Profile switched!' can disappear behind a tank or tare toast (and uses rollover-unsafe `millis() > timer + 1150`).
+- **Instruction:** Keep the last dropped message in a static buffer and show it when the cooldown expires instead of discarding it, and use `millis() - timer > 1150` with `unsigned long timer`.
 
 ### N03 (medium): Home: the tank level (j0) has no widget
 
@@ -158,3 +158,9 @@ IDs: `G..` = Gemini build (same numbering as the earlier `N..` IDs), `C..` = thi
 - **Screens:** all
 - **Problem:** Everything here is verified in nxwright's headless simulator only.
 - **Instruction:** Flash build output nextion-lcd-delongui.tft (SD, FAT32), then check: touch on tp RAMP/HOLD tabs, brew graph scroll at 250 ms, graphPreview draw time < 1 s, steam on/off on sP, and a popup mid manual shot.
+
+### N09 (high): Firmware: lcdSetWeight() overflows its stack buffer at >= 100.0 g
+
+- **Screens:** 09 Manual brew, 14 Live brew graph (31 s shot); widgets `C09-21`, `C14-09`
+- **Problem:** src/lcd/nextion.cpp:525-532 formats into `char tmp[6]` with `snprintf(tmp, sizeof(tmp), "%.1f", ...)` and checks `check <= sizeof(tmp)` before `strcat(tmp, "g")`. For >= 100.0 g (or <= -10.0 g), `check == 5 <= 6`, so `strcat` writes 7 bytes ("100.0g\0") into `tmp[6]` — a 1-byte stack buffer overflow.
+- **Instruction:** Replace with `char tmp[10]; int check = snprintf(tmp, sizeof(tmp), "%.1fg", static_cast<double>(val)); if (check > 0 && static_cast<unsigned int>(check) < sizeof(tmp)) { myNex.writeStr("weight.txt", tmp); }`.
