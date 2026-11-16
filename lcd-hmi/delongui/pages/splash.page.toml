@@ -1,0 +1,61 @@
+[page]
+name = "splash"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "p0"
+type = "picture"
+x = 0
+y = 0
+w = 320
+h = 240
+lockobj = 1
+pic = "bg_splash"
+
+[[component]]
+name = "loadBar"
+type = "progress-bar"
+x = 58
+y = 182
+w = 204
+h = 6
+val = 0
+bco = "#090D12"
+pco = "#38BDF8"
+
+[[component]]
+name = "t0"
+type = "text"
+x = 96
+y = 198
+w = 58
+h = 18
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 2
+txt = "BUILD"
+
+[[component]]
+name = "build_version"
+type = "text"
+x = 158
+y = 198
+w = 100
+h = 18
+font = "ui12"
+bco = "#141B24"
+pco = "#38BDF8"
+xcen = 0
+txt = ""
+txt_maxl = 24
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

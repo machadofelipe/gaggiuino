@@ -1,0 +1,140 @@
+on bM.load:
+  printh 23 02 50 04
+  flushState = 0
+  descaleState = 0
+  ppManualState = 1
+  n1.val = currentTemp
+  h0.val = h0.minval
+  mlPerSec.val = h0.val
+  vaTick.val = 0
+  vaSec.val = 0
+  n0.val = 0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on bM.unload:
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  ppManualState = 0
+  flushState = 0
+  descaleState = 0
+  page home
+
+on b0.up:
+  ppManualState = 0
+  flushState = 1
+  page cleanFlush
+
+on h0.down:
+  mlPerSec.val = h0.val
+
+on h0.up:
+  mlPerSec.val = h0.val
+
+on h0.slide:
+  mlPerSec.val = h0.val
+
+on bFlM.up:
+  if (h0.val >= 2) {
+    h0.val -= 2
+  } else {
+    h0.val = 0
+  }
+  mlPerSec.val = h0.val
+
+on bFlP.up:
+  if (h0.val <= 128) {
+    h0.val += 2
+  } else {
+    h0.val = 130
+  }
+  mlPerSec.val = h0.val
+
+on tm0.timer:
+  if (timerState == 1) {
+    if (activeBrewTime > 0) {
+      vaSec.val = activeBrewTime
+    } else {
+      vaTick.val += tm0.tim
+      if (vaTick.val >= 1000) {
+        vaTick.val -= 1000
+        vaSec.val++
+      }
+    }
+  } else {
+    vaTick.val = 0
+    vaSec.val = 0
+  }
+  n0.val = vaSec.val
+
+on tm1.timer:
+  n1.val = currentTemp
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }

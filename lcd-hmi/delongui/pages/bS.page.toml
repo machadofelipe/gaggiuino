@@ -1,0 +1,237 @@
+[page]
+name = "bS"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 4
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t8"
+type = "text"
+x = 44
+y = 5
+w = 190
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "BREW OPTIONS"
+txt_maxl = 20
+
+[[component]]
+name = "b4"
+type = "button"
+x = 244
+y = 2
+w = 72
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn72_pri_up"
+pic2 = "btn72_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "btGoHomeBg"
+type = "text"
+x = 8
+y = 44
+w = 304
+h = 52
+lockobj = 1
+sta = 2
+pic = "card_304x52"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t4"
+type = "text"
+x = 18
+y = 52
+w = 220
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Return Home After Shot"
+txt_maxl = 32
+
+[[component]]
+name = "t4Sub"
+type = "text"
+x = 18
+y = 72
+w = 220
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "Auto-exit brewGraph 10s after finish"
+txt_maxl = 48
+
+[[component]]
+name = "btGoHome"
+type = "dual-state-button"
+x = 250
+y = 58
+w = 52
+h = 24
+lockobj = 1
+sta = 2
+pic = "sw_off"
+pic2 = "sw_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "btTempDeltaBg"
+type = "text"
+x = 8
+y = 104
+w = 304
+h = 52
+lockobj = 1
+sta = 2
+pic = "card_304x52"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t0"
+type = "text"
+x = 18
+y = 112
+w = 220
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Brew Temp Delta"
+txt_maxl = 32
+
+[[component]]
+name = "t0Sub"
+type = "text"
+x = 18
+y = 132
+w = 220
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "Adaptive temperature boost during shot"
+txt_maxl = 48
+
+[[component]]
+name = "btTempDelta"
+type = "dual-state-button"
+x = 250
+y = 118
+w = 52
+h = 24
+lockobj = 1
+sta = 2
+pic = "sw_off"
+pic2 = "sw_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "btPrefillBg"
+type = "text"
+x = 8
+y = 164
+w = 304
+h = 52
+lockobj = 1
+sta = 2
+pic = "card_304x52"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t2"
+type = "text"
+x = 18
+y = 172
+w = 220
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Basket Prefill"
+txt_maxl = 32
+
+[[component]]
+name = "t2Sub"
+type = "text"
+x = 18
+y = 192
+w = 220
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "Pre-saturate puck prior to pre-infusion"
+txt_maxl = 48
+
+[[component]]
+name = "btPrefill"
+type = "dual-state-button"
+x = 250
+y = 178
+w = 52
+h = 24
+lockobj = 1
+sta = 2
+pic = "sw_off"
+pic2 = "sw_on"
+txt = ""
+font = "ui12"

@@ -1,0 +1,774 @@
+[page]
+name = "tp"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 2
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b0"
+type = "button"
+x = 42
+y = 2
+w = 66
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab66_off"
+pic2 = "tab66_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "1 PI"
+
+[[component]]
+name = "b5"
+type = "button"
+x = 111
+y = 2
+w = 66
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab66_off"
+pic2 = "tab66_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "2 Soak"
+
+[[component]]
+name = "b8"
+type = "button"
+x = 180
+y = 2
+w = 66
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab66_on"
+pic2 = "tab66_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#F3F4F6"
+txt = "3 Trans"
+
+[[component]]
+name = "b6"
+type = "button"
+x = 249
+y = 2
+w = 68
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab68_off"
+pic2 = "tab68_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "4 Main"
+
+[[component]]
+name = "tEn"
+type = "dual-state-button"
+x = 6
+y = 32
+w = 52
+h = 24
+lockobj = 1
+sta = 2
+pic = "sw_bg_off"
+pic2 = "sw_bg_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "Type"
+type = "dual-state-button"
+x = 64
+y = 32
+w = 96
+h = 24
+lockobj = 1
+sta = 2
+pic = "mode_bar"
+pic2 = "mode_flow"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tabRamp"
+type = "button"
+x = 168
+y = 32
+w = 68
+h = 24
+lockobj = 1
+sta = 2
+pic = "sub68_on"
+pic2 = "sub68_dn"
+font = "ui12"
+pco = "#0D1117"
+pco2 = "#F3F4F6"
+txt = "RAMP"
+
+[[component]]
+name = "tabHold"
+type = "button"
+x = 240
+y = 32
+w = 74
+h = 24
+lockobj = 1
+sta = 2
+pic = "sub74_off"
+pic2 = "sub74_dn"
+font = "ui12"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "HOLD/CRV"
+
+[[component]]
+name = "tStartBg"
+type = "text"
+x = 6
+y = 60
+w = 308
+h = 34
+lockobj = 1
+sta = 2
+pic = "card_308x34"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pStartTxt"
+type = "text"
+x = 14
+y = 68
+w = 128
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "START (bar)"
+txt_maxl = 24
+
+[[component]]
+name = "bStM"
+type = "button"
+x = 151
+y = 63
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_m_up"
+pic2 = "step34_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tStart"
+type = "xfloat"
+vscope = 1
+x = 189
+y = 63
+w = 82
+h = 27
+lockobj = 1
+sta = 2
+pic = "well_82x27"
+key = 2
+font = "ui20"
+pco = "#F59E0B"
+val = 0
+vvs1 = 1
+
+[[component]]
+name = "bStP"
+type = "button"
+x = 275
+y = 63
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_p_up"
+pic2 = "step34_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tEndBg"
+type = "text"
+x = 6
+y = 96
+w = 308
+h = 34
+lockobj = 1
+sta = 2
+pic = "card_308x34"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pEndTxt"
+type = "text"
+x = 14
+y = 104
+w = 128
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "END (bar)"
+txt_maxl = 24
+
+[[component]]
+name = "bEnM"
+type = "button"
+x = 151
+y = 99
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_m_up"
+pic2 = "step34_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tEnd"
+type = "xfloat"
+vscope = 1
+x = 189
+y = 99
+w = 82
+h = 27
+lockobj = 1
+sta = 2
+pic = "well_82x27"
+key = 2
+font = "ui20"
+pco = "#F59E0B"
+val = 0
+vvs1 = 1
+
+[[component]]
+name = "bEnP"
+type = "button"
+x = 275
+y = 99
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_p_up"
+pic2 = "step34_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tSlopeBg"
+type = "text"
+x = 6
+y = 132
+w = 308
+h = 34
+lockobj = 1
+sta = 2
+pic = "card_308x34"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tSlLbl"
+type = "text"
+x = 14
+y = 140
+w = 128
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "SLOPE TIME (s)"
+txt_maxl = 24
+
+[[component]]
+name = "bSlM"
+type = "button"
+x = 151
+y = 135
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_m_up"
+pic2 = "step34_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tSlope"
+type = "number"
+vscope = 1
+x = 189
+y = 135
+w = 82
+h = 27
+lockobj = 1
+sta = 2
+pic = "well_82x27"
+key = 2
+font = "ui20"
+pco = "#38BDF8"
+val = 3
+
+[[component]]
+name = "bSlP"
+type = "button"
+x = 275
+y = 135
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_p_up"
+pic2 = "step34_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tLimBg"
+type = "text"
+x = 6
+y = 168
+w = 308
+h = 34
+lockobj = 1
+sta = 2
+pic = "card_308x34"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pLimTxt"
+type = "text"
+x = 14
+y = 176
+w = 128
+h = 18
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "FLOW LIM (ml/s)"
+txt_maxl = 24
+
+[[component]]
+name = "bLmM"
+type = "button"
+x = 151
+y = 171
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_m_up"
+pic2 = "step34_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tLim"
+type = "xfloat"
+vscope = 1
+x = 189
+y = 171
+w = 82
+h = 27
+lockobj = 1
+sta = 2
+pic = "well_82x27"
+key = 2
+font = "ui20"
+pco = "#06B6D4"
+val = 0
+vvs1 = 1
+
+[[component]]
+name = "bLmP"
+type = "button"
+x = 275
+y = 171
+w = 34
+h = 27
+lockobj = 1
+sta = 2
+pic = "step34_p_up"
+pic2 = "step34_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tHoldBg"
+type = "text"
+x = 6
+y = 60
+w = 204
+h = 67
+lockobj = 1
+sta = 2
+pic = "card_204x67"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tHdLbl"
+type = "text"
+x = 14
+y = 67
+w = 188
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "HOLD TIME (s)"
+txt_maxl = 24
+
+[[component]]
+name = "bHdM"
+type = "button"
+x = 16
+y = 90
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tHold"
+type = "number"
+vscope = 1
+x = 67
+y = 90
+w = 82
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_82x28"
+key = 2
+font = "ui20"
+pco = "#38BDF8"
+val = 7
+
+[[component]]
+name = "bHdP"
+type = "button"
+x = 164
+y = 90
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "hLimBg"
+type = "text"
+x = 6
+y = 135
+w = 204
+h = 67
+lockobj = 1
+sta = 2
+pic = "card_204x67"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "hLimTxt"
+type = "text"
+x = 14
+y = 142
+w = 188
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "HOLD LIM (ml/s)"
+txt_maxl = 24
+
+[[component]]
+name = "bHlM"
+type = "button"
+x = 16
+y = 165
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "hLim"
+type = "xfloat"
+vscope = 1
+x = 67
+y = 165
+w = 82
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_82x28"
+key = 2
+font = "ui20"
+pco = "#06B6D4"
+val = 0
+vvs1 = 1
+
+[[component]]
+name = "bHlP"
+type = "button"
+x = 164
+y = 165
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "crvBg"
+type = "text"
+x = 214
+y = 60
+w = 102
+h = 142
+lockobj = 1
+sta = 2
+pic = "card_102x142"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tCrv"
+type = "text"
+x = 216
+y = 62
+w = 98
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 1
+txt = "TRANS CURVE"
+txt_maxl = 20
+
+[[component]]
+name = "pfEaseInOut"
+type = "dual-state-button"
+x = 217
+y = 78
+w = 96
+h = 22
+lockobj = 1
+sta = 2
+pic = "crv22_0_off"
+pic2 = "crv22_0_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pfEaseIn"
+type = "dual-state-button"
+x = 217
+y = 102
+w = 96
+h = 22
+lockobj = 1
+sta = 2
+pic = "crv22_1_off"
+pic2 = "crv22_1_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pfEaseOut"
+type = "dual-state-button"
+x = 217
+y = 126
+w = 96
+h = 22
+lockobj = 1
+sta = 2
+pic = "crv22_2_off"
+pic2 = "crv22_2_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pfLinear"
+type = "dual-state-button"
+x = 217
+y = 150
+w = 96
+h = 22
+lockobj = 1
+sta = 2
+pic = "crv22_3_off"
+pic2 = "crv22_3_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "pfInstant"
+type = "dual-state-button"
+x = 217
+y = 174
+w = 96
+h = 22
+lockobj = 1
+sta = 2
+pic = "crv22_4_off"
+pic2 = "crv22_4_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "ftrBg"
+type = "text"
+x = 0
+y = 206
+w = 320
+h = 34
+lockobj = 1
+sta = 2
+pic = "ftr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b3"
+type = "button"
+x = 6
+y = 210
+w = 98
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn98_sec_up"
+pic2 = "btn98_sec_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#38BDF8"
+txt = "More"
+
+[[component]]
+name = "b4"
+type = "button"
+x = 111
+y = 210
+w = 98
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn98_out_up"
+pic2 = "btn98_out_dn"
+font = "ui14"
+pco = "#38BDF8"
+pco2 = "#0D1117"
+txt = "Preview"
+
+[[component]]
+name = "b7"
+type = "button"
+x = 216
+y = 210
+w = 98
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn98_pri_up"
+pic2 = "btn98_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "viewMode"
+type = "variable"
+vscope = 1
+val = 0
+
+[[component]]
+name = "refUI"
+type = "hotspot"
+x = 318
+y = 238
+w = 2
+h = 2
+lockobj = 1
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

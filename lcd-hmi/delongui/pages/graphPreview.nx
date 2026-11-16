@@ -1,0 +1,591 @@
+on graphPreview.load:
+  printh 23 02 50 0D
+  d1.val = 0
+  d2.val = 0
+  d3.val = 0
+  d4.val = 0
+  d5.val = 0
+  d6.val = 0
+  if (piState == 1) {
+    d1.val = pi.piTime.val
+    if (d1.val < 1) {
+      d1.val = 1
+    }
+  }
+  if (skState == 1) {
+    d2.val = sk.skTime.val
+    if (d2.val < 1) {
+      d2.val = 1
+    }
+  }
+  if (skCrv != 4 && sk.skRamp.val > 0) {
+    if (skState == 1 || piState == 1 || basketPrefill == 1) {
+      tt.val = 90
+      if (ppState == 1 && paState == 1) {
+        if (tp.tHold.val > 0) {
+          tt.val = tp.tStart.val
+        } else if (paCrv == 4 || tp.tSlope.val == 0) {
+          tt.val = tp.tEnd.val
+        } else {
+          tt.val = tp.tStart.val
+        }
+      } else if (ppState == 1) {
+        if (pfCrv == 4 || pf.pSlope.val == 0) {
+          tt.val = pf.pEnd.val
+        } else {
+          tt.val = pf.pStart.val
+        }
+      }
+      if (tt.val > 0) {
+        d3.val = sk.skRamp.val
+      }
+    }
+  }
+  if (ppState == 1 && paState == 1) {
+    d4.val = tp.tHold.val
+    d5.val = tp.tSlope.val
+    if (d5.val < 1) {
+      d5.val = 1
+    }
+  }
+  if (ppState == 1) {
+    d6.val = pf.pSlope.val
+    if (d6.val < 1) {
+      d6.val = 1
+    }
+  }
+  d7.val = 6
+  tTot.val = d1.val + d2.val + d3.val + d4.val + d5.val + d6.val + d7.val
+  tSum.txt = ""
+  if (piState == 1) {
+    covx d1.val,sTmp.txt,0,0
+    tSum.txt += "PI "
+    tSum.txt += sTmp.txt
+    tSum.txt += "s "
+  }
+  if (skState == 1) {
+    covx d2.val,sTmp.txt,0,0
+    tSum.txt += "SK "
+    tSum.txt += sTmp.txt
+    tSum.txt += "s "
+  }
+  if (d3.val > 0) {
+    covx d3.val,sTmp.txt,0,0
+    tSum.txt += "RMP "
+    tSum.txt += sTmp.txt
+    tSum.txt += "s "
+  }
+  if (ppState == 1 && paState == 1) {
+    tt.val = d4.val + d5.val
+    covx tt.val,sTmp.txt,0,0
+    tSum.txt += "TR "
+    tSum.txt += sTmp.txt
+    tSum.txt += "s "
+  }
+  if (ppState == 1) {
+    covx d6.val,sTmp.txt,0,0
+    tSum.txt += "PF "
+    tSum.txt += sTmp.txt
+    tSum.txt += "s "
+  }
+  tt.val = tTot.val - d7.val
+  covx tt.val,sTmp.txt,0,0
+  tSum.txt += "| Total "
+  tSum.txt += sTmp.txt
+  tSum.txt += "s"
+
+on graphPreview.loadend:
+  // Draw alternating phase bands + reserved y=33..46 header labels + grid + firmware-accurate piecewise curves (-1 = unrestricted/omitted)
+  cx.val = 27
+  band.val = 0
+  p1.val = 90
+  f1.val = -1
+  // 1. Pre-Infusion
+  if (d1.val > 0 && cx.val < 297) {
+    segW.val = d1.val * 270 / tTot.val
+    if (segW.val < 10) {
+      segW.val = 10
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      fill cx.val,33,segW.val,152,4292
+      band.val = 1
+      if (segW.val >= 16) {
+        xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"PI"
+      }
+      if (piFlowState == 1) {
+        if (pi.piBar.val > 0) {
+          p0.val = pi.piBar.val
+          p1.val = pi.piBar.val
+        } else {
+          p0.val = -1
+          p1.val = -1
+        }
+        f0.val = pi.piFlow.val
+        f1.val = pi.piFlow.val
+      } else {
+        p0.val = pi.piBar.val
+        p1.val = pi.piBar.val
+        if (pi.piFlow.val > 0) {
+          f0.val = pi.piFlow.val
+          f1.val = pi.piFlow.val
+        } else {
+          f0.val = -1
+          f1.val = -1
+        }
+      }
+      crv.val = 3
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  }
+  // 2. Soak
+  if (d2.val > 0 && cx.val < 297) {
+    segW.val = d2.val * 270 / tTot.val
+    if (segW.val < 10) {
+      segW.val = 10
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      if (band.val == 0) {
+        fill cx.val,33,segW.val,152,4292
+        band.val = 1
+      } else {
+        fill cx.val,33,segW.val,152,2178
+        band.val = 0
+      }
+      line cx.val,33,cx.val,184,10664
+      if (segW.val >= 16) {
+        if (band.val == 1) {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"SK"
+        } else {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,2178,0,1,1,"SK"
+        }
+      }
+      if (sk.skBar.val > 0) {
+        p0.val = sk.skBar.val
+        p1.val = sk.skBar.val
+        if (sk.skFlow.val > 0) {
+          f0.val = sk.skFlow.val
+          f1.val = sk.skFlow.val
+        } else {
+          f0.val = -1
+          f1.val = -1
+        }
+      } else if (sk.skFlow.val > 0) {
+        p0.val = -1
+        p1.val = -1
+        f0.val = sk.skFlow.val
+        f1.val = sk.skFlow.val
+      } else {
+        p0.val = 0
+        p1.val = 0
+        f0.val = -1
+        f1.val = -1
+      }
+      crv.val = 3
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  }
+  // 3. Soak -> Target Ramp (firmware insertRampPhaseIfNeeded ramps target channel with restriction=-1)
+  if (d3.val > 0 && cx.val < 297) {
+    segW.val = d3.val * 270 / tTot.val
+    if (segW.val < 8) {
+      segW.val = 8
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      if (band.val == 0) {
+        fill cx.val,33,segW.val,152,4292
+        band.val = 1
+      } else {
+        fill cx.val,33,segW.val,152,2178
+        band.val = 0
+      }
+      line cx.val,33,cx.val,184,10664
+      if (segW.val >= 24) {
+        if (band.val == 1) {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"RMP"
+        } else {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,2178,0,1,1,"RMP"
+        }
+      }
+      // Determine whether target phase is Flow (tt=1) or Pressure (tt=0)
+      tt.val = 0
+      if (ppState == 1 && paState == 1 && paType == 1) {
+        tt.val = 1
+      } else if (ppState == 1 && paState == 0 && ppType == 1) {
+        tt.val = 1
+      }
+      if (tt.val == 1) {
+        p0.val = -1
+        p1.val = -1
+        if (skState == 1) {
+          f0.val = sk.skFlow.val
+        } else if (piState == 1) {
+          f0.val = pi.piFlow.val
+        } else {
+          f0.val = 70
+        }
+        if (paState == 1) {
+          if (tp.tHold.val > 0) {
+            f1.val = tp.tStart.val
+          } else if (paCrv == 4 || tp.tSlope.val == 0) {
+            f1.val = tp.tEnd.val
+          } else {
+            f1.val = tp.tStart.val
+          }
+        } else {
+          if (pfCrv == 4 || pf.pSlope.val == 0) {
+            f1.val = pf.pEnd.val
+          } else {
+            f1.val = pf.pStart.val
+          }
+        }
+      } else {
+        f0.val = -1
+        f1.val = -1
+        if (skState == 1) {
+          p0.val = sk.skBar.val
+        } else if (piState == 1) {
+          p0.val = pi.piBar.val
+        } else {
+          p0.val = 0
+        }
+        if (ppState == 1 && paState == 1) {
+          if (tp.tHold.val > 0) {
+            p1.val = tp.tStart.val
+          } else if (paCrv == 4 || tp.tSlope.val == 0) {
+            p1.val = tp.tEnd.val
+          } else {
+            p1.val = tp.tStart.val
+          }
+        } else if (ppState == 1) {
+          if (pfCrv == 4 || pf.pSlope.val == 0) {
+            p1.val = pf.pEnd.val
+          } else {
+            p1.val = pf.pStart.val
+          }
+        } else {
+          p1.val = 90
+        }
+      }
+      crv.val = skCrv
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  }
+  // 4. Transition Hold
+  if (d4.val > 0 && cx.val < 297) {
+    segW.val = d4.val * 270 / tTot.val
+    if (segW.val < 8) {
+      segW.val = 8
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      if (band.val == 0) {
+        fill cx.val,33,segW.val,152,4292
+        band.val = 1
+      } else {
+        fill cx.val,33,segW.val,152,2178
+        band.val = 0
+      }
+      line cx.val,33,cx.val,184,10664
+      if (segW.val >= 16) {
+        if (band.val == 1) {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"HD"
+        } else {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,2178,0,1,1,"HD"
+        }
+      }
+      if (paType == 0) {
+        p0.val = tp.tStart.val
+        p1.val = tp.tStart.val
+        if (tp.hLim.val > 0) {
+          f0.val = tp.hLim.val
+          f1.val = tp.hLim.val
+        } else {
+          f0.val = -1
+          f1.val = -1
+        }
+      } else {
+        if (tp.hLim.val > 0) {
+          p0.val = tp.hLim.val
+          p1.val = tp.hLim.val
+        } else {
+          p0.val = -1
+          p1.val = -1
+        }
+        f0.val = tp.tStart.val
+        f1.val = tp.tStart.val
+      }
+      crv.val = 3
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  }
+  // 5. Transition Slope
+  if (d5.val > 0 && cx.val < 297) {
+    segW.val = d5.val * 270 / tTot.val
+    if (segW.val < 10) {
+      segW.val = 10
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      if (band.val == 0) {
+        fill cx.val,33,segW.val,152,4292
+        band.val = 1
+      } else {
+        fill cx.val,33,segW.val,152,2178
+        band.val = 0
+      }
+      line cx.val,33,cx.val,184,10664
+      if (segW.val >= 16) {
+        if (band.val == 1) {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"TR"
+        } else {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,2178,0,1,1,"TR"
+        }
+      }
+      if (paType == 0) {
+        if (paCrv == 4 || tp.tSlope.val == 0) {
+          p0.val = tp.tEnd.val
+        } else {
+          p0.val = tp.tStart.val
+        }
+        p1.val = tp.tEnd.val
+        if (tp.tLim.val > 0) {
+          f0.val = tp.tLim.val
+          f1.val = tp.tLim.val
+        } else {
+          f0.val = -1
+          f1.val = -1
+        }
+      } else {
+        if (tp.tLim.val > 0) {
+          p0.val = tp.tLim.val
+          p1.val = tp.tLim.val
+        } else {
+          p0.val = -1
+          p1.val = -1
+        }
+        if (paCrv == 4 || tp.tSlope.val == 0) {
+          f0.val = tp.tEnd.val
+        } else {
+          f0.val = tp.tStart.val
+        }
+        f1.val = tp.tEnd.val
+      }
+      crv.val = paCrv
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  }
+  // 6. Main Profile Slope
+  if (d6.val > 0 && cx.val < 297) {
+    segW.val = d6.val * 270 / tTot.val
+    if (segW.val < 18) {
+      segW.val = 18
+    }
+    tt.val = 297 - cx.val
+    if (segW.val > tt.val) {
+      segW.val = tt.val
+    }
+    if (segW.val > 0) {
+      if (band.val == 0) {
+        fill cx.val,33,segW.val,152,4292
+        band.val = 1
+      } else {
+        fill cx.val,33,segW.val,152,2178
+        band.val = 0
+      }
+      line cx.val,33,cx.val,184,10664
+      if (segW.val >= 28) {
+        if (band.val == 1) {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,4292,0,1,1,"MAIN"
+        } else {
+          xstr cx.val+2,33,segW.val-2,13,@font(ui12),15871,2178,0,1,1,"MAIN"
+        }
+      }
+      if (ppType == 0) {
+        if (pfCrv == 4 || pf.pSlope.val == 0) {
+          p0.val = pf.pEnd.val
+        } else {
+          p0.val = pf.pStart.val
+        }
+        p1.val = pf.pEnd.val
+        if (pf.pLim.val > 0) {
+          f0.val = pf.pLim.val
+          f1.val = pf.pLim.val
+        } else {
+          f0.val = -1
+          f1.val = -1
+        }
+      } else {
+        if (pf.pLim.val > 0) {
+          p0.val = pf.pLim.val
+          p1.val = pf.pLim.val
+        } else {
+          p0.val = -1
+          p1.val = -1
+        }
+        if (pfCrv == 4 || pf.pSlope.val == 0) {
+          f0.val = pf.pEnd.val
+        } else {
+          f0.val = pf.pStart.val
+        }
+        f1.val = pf.pEnd.val
+      }
+      crv.val = pfCrv
+      click drawSeg,0
+      cx.val += segW.val
+    }
+  } else if (d6.val == 0) {
+    // Plain 9-bar fallback if main profiling disabled (firmware profile_builder.cpp:144 sets restriction=-1)
+    p1.val = 90
+    f1.val = -1
+  }
+  // 7. Plateau tail to x=297
+  if (cx.val < 297) {
+    segW.val = 297 - cx.val
+    if (band.val == 0) {
+      fill cx.val,33,segW.val,152,4292
+      band.val = 1
+    } else {
+      fill cx.val,33,segW.val,152,2178
+      band.val = 0
+    }
+    line cx.val,33,cx.val,184,10664
+    p0.val = p1.val
+    f0.val = f1.val
+    crv.val = 3
+    click drawSeg,0
+  }
+
+on drawSeg.up:
+  // Draw horizontal reference gridlines (0, 3, 6, 9, 12 -> y = 180, 147, 114, 81, 48) strictly below y=46 banner
+  nxX.val = cx.val + segW.val - 1
+  line cx.val,180,nxX.val,180,6438
+  line cx.val,147,nxX.val,147,6438
+  line cx.val,114,nxX.val,114,6438
+  line cx.val,81,nxX.val,81,6438
+  line cx.val,48,nxX.val,48,6438
+  // Compute initial y0 at segU=0 (0..12 bar & 0..12 ml/s -> 180..48 via *11/10); -1 means unrestricted (omitted)
+  if (p0.val >= 0 && p1.val >= 0) {
+    tt.val = p0.val
+    if (tt.val > 120) {
+      tt.val = 120
+    }
+    tt.val = tt.val * 11 / 10
+    py0.val = 180 - tt.val
+  }
+  if (f0.val >= 0 && f1.val >= 0) {
+    tt.val = f0.val
+    if (tt.val > 120) {
+      tt.val = 120
+    }
+    tt.val = tt.val * 11 / 10
+    fy0.val = 180 - tt.val
+  }
+  for (segU.val = 1; segU.val <= segW.val; segU.val++) {
+    // Compute pct in 0..1000 matching firmware pow(u,1.675) & smooth ease-in-out
+    if (crv.val == 4) {
+      pct.val = 1000
+    } else if (crv.val == 3) {
+      pct.val = segU.val * 1000 / segW.val
+    } else if (crv.val == 1) {
+      uu.val = segU.val * 1000 / segW.val
+      tt.val = uu.val * uu.val / 1000
+      tt.val *= 73
+      pct.val = uu.val * 27 + tt.val
+      pct.val /= 100
+    } else if (crv.val == 2) {
+      uu.val = segU.val * 1000 / segW.val
+      uu.val = 1000 - uu.val
+      tt.val = uu.val * uu.val / 1000
+      tt.val *= 73
+      pct.val = uu.val * 27 + tt.val
+      pct.val /= 100
+      pct.val = 1000 - pct.val
+    } else {
+      uu.val = segU.val * 1000 / segW.val
+      tt.val = uu.val * uu.val / 1000
+      pct.val = tt.val * uu.val / 1000
+      pct.val *= 2
+      tt.val *= 3
+      pct.val = tt.val - pct.val
+    }
+    nxX.val = cx.val + segU.val
+    if (nxX.val > 296) {
+      nxX.val = 296
+    }
+    // Draw 2px Flow (Cyan) only when defined (>=0)
+    if (f0.val >= 0 && f1.val >= 0) {
+      tt.val = f1.val - f0.val
+      tt.val = tt.val * pct.val / 1000 + f0.val
+      if (tt.val > 120) {
+        tt.val = 120
+      }
+      if (tt.val < 0) {
+        tt.val = 0
+      }
+      tt.val = tt.val * 11 / 10
+      fy1.val = 180 - tt.val
+      line nxX.val-1,fy0.val,nxX.val,fy1.val,1466
+      line nxX.val-1,fy0.val-1,nxX.val,fy1.val-1,1466
+      fy0.val = fy1.val
+    }
+    // Draw 2px Pressure (Amber) only when defined (>=0)
+    if (p0.val >= 0 && p1.val >= 0) {
+      tt.val = p1.val - p0.val
+      tt.val = tt.val * pct.val / 1000 + p0.val
+      if (tt.val > 120) {
+        tt.val = 120
+      }
+      if (tt.val < 0) {
+        tt.val = 0
+      }
+      tt.val = tt.val * 11 / 10
+      py1.val = 180 - tt.val
+      line nxX.val-1,py0.val,nxX.val,py1.val,62689
+      line nxX.val-1,py0.val-1,nxX.val,py1.val-1,62689
+      py0.val = py1.val
+    }
+  }
+
+on graphPreview.unload:
+  popupMSG.returnid.val = dp
+
+on b0.up:
+  page prevPage
+
+on bJPi.up:
+  page pi
+
+on bJSk.up:
+  page sk
+
+on bJTr.up:
+  page tp
+
+on bJPf.up:
+  page pf
+
+on bSav.up:
+  printh 23 02 54 08

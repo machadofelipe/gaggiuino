@@ -1,0 +1,5 @@
+on tm0.timer:
+  loadBar.val += 4
+  if (loadBar.val >= 99) {
+    page home
+  }

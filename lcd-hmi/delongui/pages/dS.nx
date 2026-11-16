@@ -1,0 +1,138 @@
+on dS.load:
+  printh 23 02 50 0B
+  btShotState.val = shotState
+  click refUI,0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on dS.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  page home
+
+on b4.up:
+  printh 23 02 54 01
+
+on btShotState.up:
+  shotState = btShotState.val
+  click refUI,0
+
+on labRistretto.up:
+  shotTarget = numDose.val
+  shotPreset = 1
+  click refUI,0
+
+on labEspresso.up:
+  shotTarget = numDose.val * 2
+  shotPreset = 2
+  click refUI,0
+
+on labLungo.up:
+  shotTarget = numDose.val * 3
+  shotPreset = 3
+  click refUI,0
+
+on labLungoPlus.up:
+  shotTarget = numDose.val * 4
+  shotPreset = 4
+  click refUI,0
+
+on refUI.up:
+  labRistretto.pic = @pic(ds_tile1_off)
+  labEspresso.pic = @pic(ds_tile2_off)
+  labLungo.pic = @pic(ds_tile3_off)
+  labLungoPlus.pic = @pic(ds_tile4_off)
+  if (shotPreset == 1) {
+    labRistretto.pic = @pic(ds_tile1_on)
+  } else if (shotPreset == 2) {
+    labEspresso.pic = @pic(ds_tile2_on)
+  } else if (shotPreset == 3) {
+    labLungo.pic = @pic(ds_tile3_on)
+  } else if (shotPreset == 4) {
+    labLungoPlus.pic = @pic(ds_tile4_on)
+  }
+
+on bDsM.up:
+  if (numDose.val >= 55) {
+    numDose.val -= 5
+  } else {
+    numDose.val = 50
+  }
+
+on bDsP.up:
+  if (numDose.val <= 295) {
+    numDose.val += 5
+  } else {
+    numDose.val = 300
+  }
+
+on bOvM.up:
+  if (numDoseForced.val >= 10) {
+    numDoseForced.val -= 10
+  } else {
+    numDoseForced.val = 0
+  }
+
+on bOvP.up:
+  if (numDoseForced.val <= 1490) {
+    numDoseForced.val += 10
+  } else {
+    numDoseForced.val = 1500
+  }
+
+on tm0.timer:
+  if (numDoseForced.val > 0) {
+    shotDose = numDoseForced.val
+  } else {
+    shotDose = numDose.val * shotPreset
+  }
+  if (shotState == 1) {
+    va0.val = shotDose / 10
+    covx va0.val,sTmp.txt,0,0
+    tCalc.txt = "TGT "
+    tCalc.txt += sTmp.txt
+    va0.val = shotDose % 10
+    covx va0.val,sTmp.txt,0,0
+    tCalc.txt += "."
+    tCalc.txt += sTmp.txt
+    tCalc.txt += "g"
+    tCalc.pco = 5584
+  } else {
+    tCalc.txt = "MANUAL OFF"
+    tCalc.pco = 17069
+  }

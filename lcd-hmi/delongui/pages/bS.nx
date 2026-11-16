@@ -1,0 +1,23 @@
+on bS.load:
+  printh 23 02 50 0A
+  btGoHome.val = bckHome
+  btTempDelta.val = deltaState
+  btPrefill.val = basketPrefill
+
+on bS.unload:
+  popupMSG.returnid.val = dp
+
+on btGoHome.up:
+  bckHome = btGoHome.val
+
+on b2.up:
+  page prevPage
+
+on b4.up:
+  printh 23 02 54 01
+
+on btTempDelta.up:
+  deltaState = btTempDelta.val
+
+on btPrefill.up:
+  basketPrefill = btPrefill.val

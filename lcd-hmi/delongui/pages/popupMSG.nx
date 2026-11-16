@@ -1,0 +1,5 @@
+on popupMSG.unload:
+  t0.txt = ""
+
+on tm0.timer:
+  page returnid.val

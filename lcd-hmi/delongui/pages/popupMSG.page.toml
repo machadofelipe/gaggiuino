@@ -1,0 +1,53 @@
+[page]
+name = "popupMSG"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "bgCard"
+type = "picture"
+x = 18
+y = 46
+w = 284
+h = 148
+lockobj = 1
+pic = "modal_284x148"
+
+[[component]]
+name = "icoNotice"
+type = "picture"
+x = 142
+y = 54
+w = 36
+h = 36
+lockobj = 1
+pic = "ico_notice_36"
+
+[[component]]
+name = "t0"
+type = "text"
+vscope = 1
+x = 28
+y = 96
+w = 264
+h = 86
+font = "ui20"
+bco = "#141B24"
+pco = "#F3F4F6"
+txt = ""
+txt_maxl = 40
+isbr = 1
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 1000
+
+[[component]]
+name = "returnid"
+type = "variable"
+vscope = 1

@@ -1,0 +1,358 @@
+[page]
+name = "dS"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 4
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tHdr"
+type = "text"
+x = 44
+y = 5
+w = 190
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "DOSE & STOP ON WEIGHT"
+txt_maxl = 24
+
+[[component]]
+name = "b4"
+type = "button"
+x = 244
+y = 2
+w = 72
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn72_pri_up"
+pic2 = "btn72_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "togBg"
+type = "text"
+x = 6
+y = 35
+w = 308
+h = 34
+lockobj = 1
+sta = 2
+pic = "card_308x34"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t3"
+type = "text"
+x = 14
+y = 42
+w = 134
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Stop On Weight"
+txt_maxl = 20
+
+[[component]]
+name = "btShotState"
+type = "dual-state-button"
+x = 150
+y = 40
+w = 52
+h = 24
+lockobj = 1
+sta = 2
+pic = "sw_off"
+pic2 = "sw_on"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tCalc"
+type = "text"
+x = 208
+y = 42
+w = 100
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#10B981"
+xcen = 2
+txt = "TGT 36.0g"
+txt_maxl = 16
+
+[[component]]
+name = "numDoseBg"
+type = "text"
+x = 6
+y = 74
+w = 308
+h = 44
+lockobj = 1
+sta = 2
+pic = "card_308x44"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t0"
+type = "text"
+x = 14
+y = 86
+w = 120
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Dose (g)"
+txt_maxl = 32
+
+[[component]]
+name = "bDsM"
+type = "button"
+x = 145
+y = 82
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bDsP"
+type = "button"
+x = 271
+y = 82
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "numDose"
+type = "xfloat"
+vscope = 1
+x = 185
+y = 82
+w = 82
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_82x28"
+key = 2
+font = "ui20"
+pco = "#10B981"
+val = 180
+vvs1 = 1
+
+[[component]]
+name = "numDoseForceBg"
+type = "text"
+x = 6
+y = 122
+w = 308
+h = 44
+lockobj = 1
+sta = 2
+pic = "card_308x44"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t7"
+type = "text"
+x = 14
+y = 134
+w = 120
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "Override (g)"
+txt_maxl = 32
+
+[[component]]
+name = "bOvM"
+type = "button"
+x = 145
+y = 130
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bOvP"
+type = "button"
+x = 271
+y = 130
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "numDoseForced"
+type = "xfloat"
+vscope = 1
+x = 185
+y = 130
+w = 82
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_82x28"
+key = 2
+font = "ui20"
+pco = "#F59E0B"
+val = 0
+vvs1 = 1
+
+[[component]]
+name = "labRistretto"
+type = "text"
+x = 6
+y = 172
+w = 74
+h = 62
+lockobj = 1
+sta = 2
+pic = "ds_tile1_off"
+font = "ui14"
+pco = "#9CA3AF"
+xcen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "labEspresso"
+type = "text"
+x = 84
+y = 172
+w = 74
+h = 62
+lockobj = 1
+sta = 2
+pic = "ds_tile2_off"
+font = "ui14"
+pco = "#9CA3AF"
+xcen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "labLungo"
+type = "text"
+x = 162
+y = 172
+w = 74
+h = 62
+lockobj = 1
+sta = 2
+pic = "ds_tile3_off"
+font = "ui14"
+pco = "#9CA3AF"
+xcen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "labLungoPlus"
+type = "text"
+x = 240
+y = 172
+w = 74
+h = 62
+lockobj = 1
+sta = 2
+pic = "ds_tile4_off"
+font = "ui14"
+pco = "#9CA3AF"
+xcen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "sTmp"
+type = "variable"
+sta = 1
+txt_maxl = 16
+txt = ""
+
+[[component]]
+name = "va0"
+type = "variable"
+
+[[component]]
+name = "refUI"
+type = "hotspot"
+x = 318
+y = 238
+w = 2
+h = 2
+lockobj = 1
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

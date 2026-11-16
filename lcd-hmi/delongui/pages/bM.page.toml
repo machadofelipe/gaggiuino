@@ -1,0 +1,406 @@
+[page]
+name = "bM"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 4
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b1"
+type = "text"
+x = 46
+y = 2
+w = 76
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab76_on"
+font = "ui14"
+pco = "#0D1117"
+xcen = 1
+txt = "MANUAL"
+
+[[component]]
+name = "b0"
+type = "button"
+x = 126
+y = 2
+w = 76
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab76_off"
+pic2 = "tab76_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "CLEAN"
+
+[[component]]
+name = "cTmp"
+type = "text"
+x = 6
+y = 36
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_temp"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t7"
+type = "text"
+x = 10
+y = 41
+w = 90
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#EF4444"
+xcen = 1
+txt = "TEMP °C"
+
+[[component]]
+name = "n1"
+type = "number"
+x = 10
+y = 62
+w = 90
+h = 30
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 1
+
+[[component]]
+name = "cFlw"
+type = "text"
+x = 111
+y = 36
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_flow"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t0"
+type = "text"
+x = 115
+y = 41
+w = 90
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#06B6D4"
+xcen = 1
+txt = "FLOW g/s"
+
+[[component]]
+name = "flow"
+type = "xfloat"
+x = 115
+y = 62
+w = 90
+h = 30
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 1
+vvs1 = 1
+
+[[component]]
+name = "cTim"
+type = "text"
+x = 216
+y = 36
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_time"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tTimeHdr"
+type = "text"
+x = 220
+y = 41
+w = 90
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#38BDF8"
+xcen = 1
+txt = "TIME s"
+
+[[component]]
+name = "n0"
+type = "number"
+x = 220
+y = 62
+w = 90
+h = 30
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 1
+lenth = 0
+
+[[component]]
+name = "cPrs"
+type = "text"
+x = 6
+y = 104
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_press"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t6"
+type = "text"
+x = 10
+y = 109
+w = 90
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#F59E0B"
+xcen = 1
+txt = "PRESS bar"
+
+[[component]]
+name = "pressure"
+type = "xfloat"
+x = 10
+y = 130
+w = 90
+h = 30
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 1
+vvs1 = 1
+
+[[component]]
+name = "cWgt"
+type = "text"
+x = 111
+y = 104
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_weight"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t8"
+type = "text"
+x = 115
+y = 109
+w = 90
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#10B981"
+xcen = 1
+txt = "WEIGHT g"
+
+[[component]]
+name = "weight"
+type = "text"
+x = 115
+y = 130
+w = 90
+h = 30
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 1
+txt = "0.0"
+txt_maxl = 12
+
+[[component]]
+name = "mlBg"
+type = "text"
+x = 216
+y = 104
+w = 98
+h = 64
+lockobj = 1
+sta = 2
+pic = "card_98x64_target"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t9"
+type = "text"
+x = 220
+y = 108
+w = 90
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0F1D26"
+pco = "#06B6D4"
+xcen = 1
+txt = "TARGET ml/s"
+txt_maxl = 16
+
+[[component]]
+name = "mlPerSec"
+type = "xfloat"
+x = 226
+y = 128
+w = 78
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#090D12"
+pco = "#06B6D4"
+xcen = 1
+vvs1 = 1
+
+[[component]]
+name = "t5"
+type = "text"
+x = 6
+y = 172
+w = 308
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_308x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tFlowHdr"
+type = "text"
+x = 14
+y = 177
+w = 292
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 1
+txt = "PUMP FLOW SLIDER (0.0 - 13.0 ml/s)"
+txt_maxl = 36
+
+[[component]]
+name = "bFlM"
+type = "button"
+x = 12
+y = 199
+w = 36
+h = 30
+lockobj = 1
+sta = 2
+pic = "step36_m_up"
+pic2 = "step36_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "h0"
+type = "slider"
+x = 56
+y = 198
+w = 208
+h = 32
+lockobj = 1
+sta = 2
+psta = 1
+wid = 26
+hig = 32
+pic = "sld_trk_flow"
+pic1 = "sld_fil_flow"
+pic2 = "sld_thb_flow"
+pco = "#F3F4F6"
+val = 0
+maxval = 130
+
+[[component]]
+name = "bFlP"
+type = "button"
+x = 272
+y = 199
+w = 36
+h = 30
+lockobj = 1
+sta = 2
+pic = "step36_p_up"
+pic2 = "step36_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 200
+
+[[component]]
+name = "tm1"
+type = "timer"
+tim = 50
+
+[[component]]
+name = "vaSec"
+type = "variable"
+
+[[component]]
+name = "vaTick"
+type = "variable"

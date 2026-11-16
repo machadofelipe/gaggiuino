@@ -1,0 +1,33 @@
+//The following code is only run once when power on, and is generally used for global variable definition and power on initialization data
+//At present, the definition of global variable only supports 4-byte signed integer (int), and other types of global quantity declaration are not supported.
+//If you want to use string type, you can use variable control in the page to implement
+// Live state vars
+int currentTemp,modeSelect,brewEnabled,targetState,scalesEnabled
+int prevPage
+// Admin state vars
+int timerState,warmupState,activeBrewTime
+//Shot dose page vars
+int shotState,shotPreset,shotDose,shotTarget
+// Preinfusion vars
+int piState,piFlowState,flushState,descaleState
+int piRPressure,switchPhaseOnThreshold,basketPrefill
+int bckHome,deltaState
+// Soak vars
+int skState
+//soak phase switching
+int skCrv
+// Profiling vars
+int ppState,ppType,paType,paState
+// Manual profiling
+int ppManualState
+//profiling phase switching
+int pfCrv,paCrv
+//Common profiling vars
+int graph0,pId,ledNum,ledOn
+int systemUpTime
+int debug1,debug2
+baud = 115200
+bkcmd = 0
+crcrest 1,0xffff
+printh 00 00 00 ff ff ff 88 ff ff ff//Output power on information to serial
+page splash

@@ -1,0 +1,328 @@
+[page]
+name = "keybdB"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+system_page = "keypad"
+
+[[component]]
+name = "loadpageid"
+type = "variable"
+vscope = 1
+
+[[component]]
+name = "loadcmpid"
+type = "variable"
+vscope = 1
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 500
+
+[[component]]
+name = "input"
+type = "variable"
+sta = 1
+txt = ""
+txt_maxl = 14
+
+[[component]]
+name = "temp"
+type = "variable"
+
+[[component]]
+name = "inputlenth"
+type = "variable"
+
+[[component]]
+name = "tempstr"
+type = "variable"
+sta = 1
+txt_maxl = 24
+
+[[component]]
+name = "ch"
+type = "variable"
+sta = 1
+txt = ""
+txt_maxl = 2
+
+[[component]]
+name = "temp2"
+type = "variable"
+
+[[component]]
+name = "show"
+type = "text"
+x = 6
+y = 6
+w = 226
+h = 38
+lockobj = 1
+sta = 2
+pic = "well_226x38"
+font = "ui26"
+pco = "#F3F4F6"
+xcen = 1
+txt = "0"
+txt_maxl = 24
+
+[[component]]
+name = "b251"
+type = "button"
+x = 238
+y = 6
+w = 76
+h = 38
+lockobj = 1
+sta = 2
+pic = "btn76x38_cancel_up"
+pic2 = "btn76x38_cancel_dn"
+font = "ui14"
+pco = "#EF4444"
+pco2 = "#0D1117"
+txt = "CANCEL"
+
+[[component]]
+name = "b1"
+type = "button"
+x = 6
+y = 50
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "1"
+txt_maxl = 1
+
+[[component]]
+name = "b2"
+type = "button"
+x = 83
+y = 50
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "2"
+txt_maxl = 1
+
+[[component]]
+name = "b3"
+type = "button"
+x = 160
+y = 50
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "3"
+txt_maxl = 1
+
+[[component]]
+name = "b4"
+type = "button"
+x = 6
+y = 97
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "4"
+txt_maxl = 1
+
+[[component]]
+name = "b5"
+type = "button"
+x = 83
+y = 97
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "5"
+txt_maxl = 1
+
+[[component]]
+name = "b6"
+type = "button"
+x = 160
+y = 97
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "6"
+txt_maxl = 1
+
+[[component]]
+name = "b7"
+type = "button"
+x = 6
+y = 144
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "7"
+txt_maxl = 1
+
+[[component]]
+name = "b8"
+type = "button"
+x = 83
+y = 144
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "8"
+txt_maxl = 1
+
+[[component]]
+name = "b9"
+type = "button"
+x = 160
+y = 144
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "9"
+txt_maxl = 1
+
+[[component]]
+name = "b0"
+type = "button"
+x = 6
+y = 191
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "0"
+txt_maxl = 1
+
+[[component]]
+name = "b99"
+type = "button"
+x = 83
+y = 191
+w = 73
+h = 43
+sta = 2
+pic = "key73x43_up"
+pic2 = "key73x43_dn"
+font = "ui20"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "."
+txt_maxl = 1
+
+[[component]]
+name = "b200"
+type = "button"
+x = 238
+y = 50
+w = 76
+h = 43
+sta = 2
+pic = "key76x43_up"
+pic2 = "key76x43_dn"
+font = "ui14"
+pco = "#F59E0B"
+pco2 = "#0D1117"
+txt = "DEL"
+txt_maxl = 6
+
+[[component]]
+name = "b10"
+type = "button"
+x = 238
+y = 97
+w = 76
+h = 43
+sta = 2
+pic = "key76x43_up"
+pic2 = "key76x43_dn"
+font = "ui20"
+pco = "#38BDF8"
+pco2 = "#0D1117"
+txt = "+1"
+txt_maxl = 2
+
+[[component]]
+name = "b30"
+type = "button"
+x = 238
+y = 144
+w = 76
+h = 43
+sta = 2
+pic = "key76x43_up"
+pic2 = "key76x43_dn"
+font = "ui20"
+pco = "#38BDF8"
+pco2 = "#0D1117"
+txt = "-1"
+txt_maxl = 2
+
+[[component]]
+name = "b210"
+type = "button"
+x = 160
+y = 191
+w = 154
+h = 43
+sta = 2
+pic = "key154x43_pri_up"
+pic2 = "key154x43_pri_dn"
+font = "ui20"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "OK"
+txt_maxl = 6

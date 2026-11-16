@@ -1,0 +1,256 @@
+on pi.load:
+  printh 23 02 50 01
+  btPiState.val = piState
+  piType.val = piFlowState
+  piPAbv.val = piRPressure
+  click refUI,0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on pi.unload:
+  popupMSG.returnid.val = dp
+  prevPage = dp
+
+on b2.up:
+  page home
+
+on b0.up:
+  page pi
+
+on b5.up:
+  page sk
+
+on b8.up:
+  page tp
+
+on b6.up:
+  page pf
+
+on b3.up:
+  page bS
+
+on b4.up:
+  page graphPreview
+
+on b7.up:
+  printh 23 02 54 01
+
+on btPiState.up:
+  piState = btPiState.val
+  click refUI,0
+
+on piPAbv.up:
+  piRPressure = piPAbv.val
+
+on piType.up:
+  piFlowState = piType.val
+  printh 23 02 54 06
+  click refUI,0
+
+on refUI.up:
+  if (piFlowState == 0) {
+    t7.txt = "TARGET (bar)"
+    t14.txt = "FLOW LIM (ml/s)"
+  } else {
+    t7.txt = "PRESS LIM (bar)"
+    t14.txt = "TARGET (ml/s)"
+  }
+  if (piState == 0) {
+    t16.pco = 17069
+    t7.pco = 17069
+    t14.pco = 17069
+    t2.pco = 17069
+    t5.pco = 17069
+    t3.pco = 17069
+    piTime.pco = 17069
+    piBar.pco = 17069
+    piFlow.pco = 17069
+    piPumped.pco = 17069
+    piAbove.pco = 17069
+    piTime.pic = @pic(well_66x27_dim)
+    piBar.pic = @pic(well_66x27_dim)
+    piFlow.pic = @pic(well_66x27_dim)
+    piPumped.pic = @pic(well_66x27_dim)
+    piAbove.pic = @pic(well_66x27_dim)
+    piPAbv.pic = @pic(sw_off_dim)
+    piPAbv.pic2 = @pic(sw_on_dim)
+    bTmM.pic = @pic(step27_m_dim)
+    bTmP.pic = @pic(step27_p_dim)
+    bBrM.pic = @pic(step27_m_dim)
+    bBrP.pic = @pic(step27_p_dim)
+    bFlM.pic = @pic(step27_m_dim)
+    bFlP.pic = @pic(step27_p_dim)
+    bPuM.pic = @pic(step27_m_dim)
+    bPuP.pic = @pic(step27_p_dim)
+    bAbM.pic = @pic(step27_m_dim)
+    bAbP.pic = @pic(step27_p_dim)
+    tsw piTime,0
+    tsw bTmM,0
+    tsw bTmP,0
+    tsw piBar,0
+    tsw bBrM,0
+    tsw bBrP,0
+    tsw piFlow,0
+    tsw bFlM,0
+    tsw bFlP,0
+    tsw piPumped,0
+    tsw bPuM,0
+    tsw bPuP,0
+    tsw piPAbv,0
+    tsw piAbove,0
+    tsw bAbM,0
+    tsw bAbP,0
+  } else {
+    t16.pco = 40213
+    t7.pco = 40213
+    t14.pco = 40213
+    t2.pco = 40213
+    t5.pco = 40213
+    t3.pco = 40213
+    piTime.pco = 15871
+    piBar.pco = 62689
+    piFlow.pco = 1466
+    piPumped.pco = 1466
+    piAbove.pco = 5584
+    piTime.pic = @pic(well_66x27)
+    piBar.pic = @pic(well_66x27)
+    piFlow.pic = @pic(well_66x27)
+    piPumped.pic = @pic(well_66x27)
+    piAbove.pic = @pic(well_66x27)
+    piPAbv.pic = @pic(sw_off)
+    piPAbv.pic2 = @pic(sw_on)
+    bTmM.pic = @pic(step27_m_up)
+    bTmP.pic = @pic(step27_p_up)
+    bBrM.pic = @pic(step27_m_up)
+    bBrP.pic = @pic(step27_p_up)
+    bFlM.pic = @pic(step27_m_up)
+    bFlP.pic = @pic(step27_p_up)
+    bPuM.pic = @pic(step27_m_up)
+    bPuP.pic = @pic(step27_p_up)
+    bAbM.pic = @pic(step27_m_up)
+    bAbP.pic = @pic(step27_p_up)
+    tsw piTime,1
+    tsw bTmM,1
+    tsw bTmP,1
+    tsw piBar,1
+    tsw bBrM,1
+    tsw bBrP,1
+    tsw piFlow,1
+    tsw bFlM,1
+    tsw bFlP,1
+    tsw piPumped,1
+    tsw bPuM,1
+    tsw bPuP,1
+    tsw piPAbv,1
+    tsw piAbove,1
+    tsw bAbM,1
+    tsw bAbP,1
+  }
+
+on bTmM.up:
+  if (piTime.val >= 1) {
+    piTime.val -= 1
+  } else {
+    piTime.val = 0
+  }
+
+on bTmP.up:
+  if (piTime.val <= 59) {
+    piTime.val += 1
+  } else {
+    piTime.val = 60
+  }
+
+on bBrM.up:
+  if (piBar.val >= 5) {
+    piBar.val -= 5
+  } else {
+    piBar.val = 0
+  }
+
+on bBrP.up:
+  if (piBar.val <= 115) {
+    piBar.val += 5
+  } else {
+    piBar.val = 120
+  }
+
+on bFlM.up:
+  if (piFlow.val >= 5) {
+    piFlow.val -= 5
+  } else {
+    piFlow.val = 0
+  }
+
+on bFlP.up:
+  if (piFlow.val <= 75) {
+    piFlow.val += 5
+  } else {
+    piFlow.val = 80
+  }
+
+on bPuM.up:
+  if (piPumped.val >= 10) {
+    piPumped.val -= 10
+  } else {
+    piPumped.val = 0
+  }
+
+on bPuP.up:
+  if (piPumped.val <= 990) {
+    piPumped.val += 10
+  } else {
+    piPumped.val = 1000
+  }
+
+on bAbM.up:
+  if (piAbove.val >= 10) {
+    piAbove.val -= 10
+  } else {
+    piAbove.val = 0
+  }
+
+on bAbP.up:
+  if (piAbove.val <= 590) {
+    piAbove.val += 10
+  } else {
+    piAbove.val = 600
+  }
+
+on tm0.timer:
+  if (timerState == 1) {
+    page brewGraph
+  }

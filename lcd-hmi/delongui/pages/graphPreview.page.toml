@@ -1,0 +1,455 @@
+[page]
+name = "graphPreview"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b0"
+type = "button"
+x = 2
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tTitle"
+type = "text"
+x = 44
+y = 5
+w = 142
+h = 20
+lockobj = 1
+font = "ui14"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+txt = "PROFILE PREVIEW"
+txt_maxl = 20
+
+[[component]]
+name = "legP"
+type = "text"
+x = 190
+y = 5
+w = 56
+h = 20
+lockobj = 1
+sta = 2
+pic = "leg_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "legF"
+type = "text"
+x = 250
+y = 5
+w = 64
+h = 20
+lockobj = 1
+sta = 2
+pic = "leg_flow"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "yL3"
+type = "text"
+x = 1
+y = 41
+w = 23
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#F59E0B"
+xcen = 2
+txt = "12"
+
+[[component]]
+name = "yL2"
+type = "text"
+x = 1
+y = 74
+w = 23
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#F59E0B"
+xcen = 2
+txt = "9"
+
+[[component]]
+name = "yL1"
+type = "text"
+x = 1
+y = 107
+w = 23
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#F59E0B"
+xcen = 2
+txt = "6"
+
+[[component]]
+name = "yL0"
+type = "text"
+x = 1
+y = 140
+w = 23
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#F59E0B"
+xcen = 2
+txt = "3"
+
+[[component]]
+name = "yLB"
+type = "text"
+x = 1
+y = 173
+w = 23
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#9CA3AF"
+xcen = 2
+txt = "0"
+
+[[component]]
+name = "yR4"
+type = "text"
+x = 300
+y = 41
+w = 19
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#06B6D4"
+xcen = 0
+txt = "12"
+
+[[component]]
+name = "yR3"
+type = "text"
+x = 300
+y = 74
+w = 19
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#06B6D4"
+xcen = 0
+txt = "9"
+
+[[component]]
+name = "yR2"
+type = "text"
+x = 300
+y = 107
+w = 19
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#06B6D4"
+xcen = 0
+txt = "6"
+
+[[component]]
+name = "yR1"
+type = "text"
+x = 300
+y = 140
+w = 19
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#06B6D4"
+xcen = 0
+txt = "3"
+
+[[component]]
+name = "yR0"
+type = "text"
+x = 300
+y = 173
+w = 19
+h = 14
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#9CA3AF"
+xcen = 0
+txt = "0"
+
+[[component]]
+name = "plotBox"
+type = "text"
+x = 26
+y = 32
+w = 272
+h = 154
+lockobj = 1
+style = 1
+borderc = "#212B38"
+borderw = 1
+bco = "#0D1117"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "tSum"
+type = "text"
+x = 6
+y = 188
+w = 308
+h = 15
+lockobj = 1
+font = "ui12"
+bco = "#0D1117"
+pco = "#9CA3AF"
+xcen = 1
+txt = ""
+txt_maxl = 56
+
+[[component]]
+name = "ftrBg"
+type = "text"
+x = 0
+y = 206
+w = 320
+h = 34
+lockobj = 1
+sta = 2
+pic = "ftr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bJPi"
+type = "button"
+x = 4
+y = 210
+w = 58
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn58_sec_up"
+pic2 = "btn58_sec_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "1 PI"
+
+[[component]]
+name = "bJSk"
+type = "button"
+x = 66
+y = 210
+w = 58
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn58_sec_up"
+pic2 = "btn58_sec_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "2 SK"
+
+[[component]]
+name = "bJTr"
+type = "button"
+x = 128
+y = 210
+w = 58
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn58_sec_up"
+pic2 = "btn58_sec_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "3 TR"
+
+[[component]]
+name = "bJPf"
+type = "button"
+x = 190
+y = 210
+w = 58
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn58_sec_up"
+pic2 = "btn58_sec_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "4 PF"
+
+[[component]]
+name = "bSav"
+type = "button"
+x = 254
+y = 210
+w = 62
+h = 27
+lockobj = 1
+sta = 2
+pic = "btn62_pri_up"
+pic2 = "btn62_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "tTot"
+type = "variable"
+
+[[component]]
+name = "d1"
+type = "variable"
+
+[[component]]
+name = "d2"
+type = "variable"
+
+[[component]]
+name = "d3"
+type = "variable"
+
+[[component]]
+name = "d4"
+type = "variable"
+
+[[component]]
+name = "d5"
+type = "variable"
+
+[[component]]
+name = "d6"
+type = "variable"
+
+[[component]]
+name = "d7"
+type = "variable"
+
+[[component]]
+name = "cx"
+type = "variable"
+
+[[component]]
+name = "nxX"
+type = "variable"
+
+[[component]]
+name = "segW"
+type = "variable"
+
+[[component]]
+name = "segU"
+type = "variable"
+
+[[component]]
+name = "crv"
+type = "variable"
+
+[[component]]
+name = "p0"
+type = "variable"
+
+[[component]]
+name = "p1"
+type = "variable"
+
+[[component]]
+name = "f0"
+type = "variable"
+
+[[component]]
+name = "f1"
+type = "variable"
+
+[[component]]
+name = "py0"
+type = "variable"
+
+[[component]]
+name = "py1"
+type = "variable"
+
+[[component]]
+name = "fy0"
+type = "variable"
+
+[[component]]
+name = "fy1"
+type = "variable"
+
+[[component]]
+name = "pct"
+type = "variable"
+
+[[component]]
+name = "uu"
+type = "variable"
+
+[[component]]
+name = "tt"
+type = "variable"
+
+[[component]]
+name = "band"
+type = "variable"
+
+[[component]]
+name = "drawSeg"
+type = "hotspot"
+x = 318
+y = 238
+w = 2
+h = 2
+lockobj = 1
+
+[[component]]
+name = "sTmp"
+type = "variable"
+sta = 1
+txt_maxl = 16
+txt = ""

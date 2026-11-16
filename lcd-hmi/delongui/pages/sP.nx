@@ -1,0 +1,117 @@
+on sP.load:
+  printh 23 02 50 08
+  btWarmup.val = warmupState
+  h0.val = dims
+  nBrt.val = dims
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on sP.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  page home
+
+on b1.up:
+  page sT
+
+on b4.up:
+  printh 23 02 54 01
+
+on h0.down:
+  dims = h0.val
+  nBrt.val = h0.val
+
+on h0.up:
+  dims = h0.val
+  nBrt.val = h0.val
+
+on h0.slide:
+  dims = h0.val
+  nBrt.val = h0.val
+
+on bBrM.up:
+  if (h0.val >= 35) {
+    h0.val -= 10
+  } else {
+    h0.val = 25
+  }
+  dims = h0.val
+  nBrt.val = h0.val
+
+on bBrP.up:
+  if (h0.val <= 90) {
+    h0.val += 10
+  } else {
+    h0.val = 100
+  }
+  dims = h0.val
+  nBrt.val = h0.val
+
+on bSlM.up:
+  if (n1.val >= 5) {
+    n1.val -= 5
+  } else {
+    n1.val = 0
+  }
+
+on bSlP.up:
+  if (n1.val <= 235) {
+    n1.val += 5
+  } else {
+    n1.val = 240
+  }
+
+on bPzM.up:
+  if (pump_zero.val >= 2125) {
+    pump_zero.val -= 25
+  } else {
+    pump_zero.val = 2100
+  }
+
+on bPzP.up:
+  if (pump_zero.val <= 3075) {
+    pump_zero.val += 25
+  } else {
+    pump_zero.val = 3100
+  }
+
+on btWarmup.up:
+  warmupState = btWarmup.val
+
+on b5.up:
+  printh 23 02 54 09

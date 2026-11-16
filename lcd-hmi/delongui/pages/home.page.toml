@@ -1,0 +1,446 @@
+[page]
+name = "home"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+sta = 2
+pic = "bg_home_up"
+
+[[component]]
+name = "b0"
+type = "button"
+x = 0
+y = 0
+w = 80
+h = 35
+lockobj = 1
+sta = 0
+picc = "bg_home_up"
+picc2 = "bg_home_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b1"
+type = "button"
+x = 80
+y = 0
+w = 80
+h = 35
+lockobj = 1
+sta = 0
+picc = "bg_home_up"
+picc2 = "bg_home_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b3"
+type = "button"
+x = 160
+y = 0
+w = 80
+h = 35
+lockobj = 1
+sta = 0
+picc = "bg_home_up"
+picc2 = "bg_home_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b4"
+type = "button"
+x = 240
+y = 0
+w = 80
+h = 35
+lockobj = 1
+sta = 0
+picc = "bg_home_up"
+picc2 = "bg_home_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "qPf1"
+type = "button"
+vscope = 1
+x = 9
+y = 45
+w = 136
+h = 27
+lockobj = 1
+sta = 2
+pic = "qpf_off"
+pic2 = "qpf_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#38BDF8"
+xcen = 1
+txt = "Profile 1"
+txt_maxl = 24
+
+[[component]]
+name = "qPf2"
+type = "button"
+vscope = 1
+x = 9
+y = 75
+w = 136
+h = 27
+lockobj = 1
+sta = 2
+pic = "qpf_off"
+pic2 = "qpf_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#38BDF8"
+xcen = 1
+txt = "Profile 2"
+txt_maxl = 24
+
+[[component]]
+name = "qPf3"
+type = "button"
+vscope = 1
+x = 9
+y = 105
+w = 136
+h = 27
+lockobj = 1
+sta = 2
+pic = "qpf_off"
+pic2 = "qpf_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#38BDF8"
+xcen = 1
+txt = "Profile 3"
+txt_maxl = 24
+
+[[component]]
+name = "qPf4"
+type = "button"
+vscope = 1
+x = 9
+y = 135
+w = 136
+h = 27
+lockobj = 1
+sta = 2
+pic = "qpf_off"
+pic2 = "qpf_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#38BDF8"
+xcen = 1
+txt = "Profile 4"
+txt_maxl = 24
+
+[[component]]
+name = "qPf5"
+type = "button"
+vscope = 1
+x = 9
+y = 165
+w = 136
+h = 27
+lockobj = 1
+sta = 2
+pic = "qpf_off"
+pic2 = "qpf_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#38BDF8"
+xcen = 1
+txt = "Profile 5"
+txt_maxl = 24
+
+[[component]]
+name = "stCard"
+type = "picture"
+x = 9
+y = 45
+w = 136
+h = 145
+lockobj = 1
+pic = "steam_panel_bg"
+
+[[component]]
+name = "stStatus"
+type = "text"
+x = 15
+y = 104
+w = 124
+h = 28
+lockobj = 1
+font = "ui14"
+bco = "#1A222E"
+pco = "#F59E0B"
+xcen = 1
+txt = "HEATING..."
+txt_maxl = 20
+
+[[component]]
+name = "stHint"
+type = "text"
+x = 15
+y = 138
+w = 124
+h = 38
+lockobj = 1
+font = "ui12"
+bco = "#1A222E"
+pco = "#9CA3AF"
+xcen = 1
+ycen = 1
+isbr = 1
+txt = "Flip steam switch OFF to brew"
+txt_maxl = 44
+
+[[component]]
+name = "b2"
+type = "button"
+vscope = 1
+x = 4
+y = 199
+w = 146
+h = 35
+lockobj = 1
+sta = 2
+pic = "dose_up"
+pic2 = "dose_dn"
+font = "ui14"
+pco = "#10B981"
+pco2 = "#0D1117"
+txt = "DOSE"
+txt_maxl = 20
+
+[[component]]
+name = "bStmEdit"
+type = "button"
+x = 4
+y = 199
+w = 146
+h = 35
+lockobj = 1
+sta = 2
+pic = "btn146_steam_up"
+pic2 = "btn146_steam_dn"
+font = "ui14"
+pco = "#F59E0B"
+pco2 = "#0D1117"
+txt = "STEAM @ 145°C"
+txt_maxl = 20
+
+[[component]]
+name = "t7"
+type = "hotspot"
+x = 156
+y = 41
+w = 78
+h = 35
+lockobj = 1
+
+[[component]]
+name = "t9"
+type = "hotspot"
+x = 236
+y = 41
+w = 78
+h = 35
+lockobj = 1
+
+[[component]]
+name = "n5"
+type = "number"
+x = 176
+y = 47
+w = 42
+h = 24
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#EF4444"
+xcen = 2
+
+[[component]]
+name = "tStmHdr"
+type = "text"
+x = 158
+y = 46
+w = 76
+h = 26
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 1
+ycen = 1
+txt = "PRESSURE"
+
+[[component]]
+name = "pressure"
+type = "xfloat"
+x = 253
+y = 47
+w = 43
+h = 24
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#F59E0B"
+xcen = 2
+vvs1 = 1
+
+[[component]]
+name = "tGauge"
+type = "text"
+x = 177
+y = 80
+w = 116
+h = 116
+sta = 2
+font = "ui20"
+pic = "picture-0000"
+pco = "#F3F4F6"
+txt = "0.0°C"
+isbr = 1
+
+[[component]]
+name = "warmupPic"
+type = "picture"
+x = 288
+y = 83
+w = 26
+h = 26
+lockobj = 1
+pic = "ico_warmup_26"
+
+[[component]]
+name = "numHour"
+type = "number"
+x = 171
+y = 202
+w = 34
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#9CA3AF"
+lenth = 2
+
+[[component]]
+name = "t1"
+type = "text"
+x = 206
+y = 202
+w = 10
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#475569"
+txt = ":"
+
+[[component]]
+name = "numMin"
+type = "number"
+x = 218
+y = 202
+w = 34
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#9CA3AF"
+lenth = 2
+
+[[component]]
+name = "t12"
+type = "text"
+x = 253
+y = 202
+w = 10
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#475569"
+txt = ":"
+
+[[component]]
+name = "numSec"
+type = "number"
+x = 265
+y = 202
+w = 34
+h = 28
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#9CA3AF"
+lenth = 2
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50
+
+[[component]]
+name = "btnPressed"
+type = "variable"
+
+[[component]]
+name = "downSlot"
+type = "variable"
+
+[[component]]
+name = "longPressCount"
+type = "variable"
+
+[[component]]
+name = "lastSteam"
+type = "variable"
+val = -1
+
+[[component]]
+name = "tempVar"
+type = "variable"
+
+[[component]]
+name = "scEn"
+type = "variable"
+
+[[component]]
+name = "elemUpdated"
+type = "variable"
+
+[[component]]
+name = "dE"
+type = "variable"
+
+[[component]]
+name = "dNr"
+type = "text"
+x = 318
+y = 238
+w = 2
+h = 2
+font = "ui12"
+bco = "#0D1117"
+pco = "#0D1117"
+txt = "0"
+
+[[component]]
+name = "refSteam"
+type = "hotspot"
+x = 318
+y = 234
+w = 2
+h = 2
+lockobj = 1

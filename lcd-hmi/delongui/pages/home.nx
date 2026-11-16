@@ -1,0 +1,411 @@
+on home.load:
+  printh 23 02 50 00
+  thsp = sP.n1.val * 60
+  thup = 1
+  vis warmupPic,0
+  vis dNr,0
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  lastSteam.val = -1
+  click refSteam,0
+  if (dS.numDoseForced.val > 0) {
+    shotTarget = dS.numDoseForced.val
+  } else {
+    shotTarget = dS.numDose.val * shotPreset
+  }
+  if (shotState == 1 && shotTarget > 0) {
+    tempVar.val = shotTarget / 10
+    covx tempVar.val,dNr.txt,0,0
+    b2.txt = "STOP @ "
+    b2.txt += dNr.txt
+    tempVar.val = shotTarget % 10
+    covx tempVar.val,dNr.txt,0,0
+    b2.txt += "."
+    b2.txt += dNr.txt
+    b2.txt += "g"
+    b2.pic = @pic(dose_act_up)
+    b2.pic2 = @pic(dose_act_dn)
+  } else {
+    b2.txt = "DOSE"
+    b2.pic = @pic(dose_up)
+    b2.pic2 = @pic(dose_dn)
+  }
+  qPf1.pic = @pic(qpf_off)
+  qPf1.pco = 40213
+  qPf2.pic = @pic(qpf_off)
+  qPf2.pco = 40213
+  qPf3.pic = @pic(qpf_off)
+  qPf3.pco = 40213
+  qPf4.pic = @pic(qpf_off)
+  qPf4.pco = 40213
+  qPf5.pic = @pic(qpf_off)
+  qPf5.pco = 40213
+  if (pId == 1) {
+    qPf1.pic = @pic(qpf_on)
+    qPf1.pco = 63422
+  } else if (pId == 2) {
+    qPf2.pic = @pic(qpf_on)
+    qPf2.pco = 63422
+  } else if (pId == 3) {
+    qPf3.pic = @pic(qpf_on)
+    qPf3.pco = 63422
+  } else if (pId == 4) {
+    qPf4.pic = @pic(qpf_on)
+    qPf4.pco = 63422
+  } else if (pId == 5) {
+    qPf5.pic = @pic(qpf_on)
+    qPf5.pco = 63422
+  }
+  elemUpdated.val = 1
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on home.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on home.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+
+on refSteam.up:
+  lastSteam.val = targetState
+  if (targetState == 1) {
+    vis qPf1,0
+    vis qPf2,0
+    vis qPf3,0
+    vis qPf4,0
+    vis qPf5,0
+    vis b2,0
+    vis n5,0
+    vis t7,0
+    vis stCard,1
+    vis stStatus,1
+    vis stHint,1
+    vis bStmEdit,1
+    vis tStmHdr,1
+  } else {
+    vis stCard,0
+    vis stStatus,0
+    vis stHint,0
+    vis bStmEdit,0
+    vis tStmHdr,0
+    vis qPf1,1
+    vis qPf2,1
+    vis qPf3,1
+    vis qPf4,1
+    vis qPf5,1
+    vis b2,1
+    vis n5,1
+    vis t7,1
+  }
+
+on b1.up:
+  page pi
+
+on b3.up:
+  flushState = 0
+  descaleState = 0
+  ppManualState = 1
+  page bM
+
+on b4.up:
+  page sT
+
+on bStmEdit.up:
+  page sT
+
+on t7.up:
+  page sT
+
+on t9.up:
+  page graphPreview
+
+on tStmHdr.up:
+  page graphPreview
+
+on pressure.up:
+  page graphPreview
+
+on n5.up:
+  page sT
+
+on tGauge.up:
+  page sT
+
+on b2.up:
+  page dS
+
+on tm0.timer:
+  if (targetState != lastSteam.val) {
+    click refSteam,0
+  }
+  if (targetState == 0) {
+    n5.val = sT.setPoint.val
+  } else {
+    covx sT.steamSetPoint.val,dNr.txt,0,0
+    bStmEdit.txt = "STEAM @ "
+    bStmEdit.txt += dNr.txt
+    bStmEdit.txt += "°C"
+    tempVar.val = sT.steamSetPoint.val - 5
+    if (currentTemp >= tempVar.val && pressure.val >= 20) {
+      stStatus.txt = "STEAM READY"
+      stStatus.pco = 5584
+    } else if (currentTemp >= tempVar.val) {
+      stStatus.txt = "PRESSURIZING"
+      stStatus.pco = 15871
+    } else {
+      stStatus.txt = "HEATING..."
+      stStatus.pco = 62689
+    }
+  }
+  covx currentTemp,tGauge.txt,0,0
+  covx dE.val,dNr.txt,0,0
+  tGauge.txt += "."
+  tGauge.txt += dNr.txt
+  tGauge.txt += "°C"
+  if (targetState == 0) {
+    if (sT.setPoint.val > 0) {
+      tempVar.val = currentTemp * 90
+      tempVar.val /= sT.setPoint.val
+    } else {
+      tempVar.val = currentTemp
+    }
+  } else {
+    if (sT.steamSetPoint.val > 0) {
+      tempVar.val = currentTemp * 90
+      tempVar.val /= sT.steamSetPoint.val
+    } else {
+      tempVar.val = currentTemp
+    }
+  }
+  if (tempVar.val < 0) {
+    tempVar.val = 0
+  }
+  if (tempVar.val > 99) {
+    tempVar.val = 99
+  }
+  tGauge.pic = tempVar.val
+  if (timerState == 1 && modeSelect != 5 && modeSelect != 6 && modeSelect != 9) {
+    page brewGraph
+  }
+  tempVar.val = sT.setPoint.val - 2
+  if (currentTemp >= tempVar.val && numSec.val <= 20) {
+    warmupState = 0
+  }
+  if (warmupState == 1 && numMin.val < 15 && currentTemp > 0) {
+    tempVar.val = numSec.val % 2
+    if (tempVar.val == 0) {
+      vis warmupPic,1
+    } else {
+      vis warmupPic,0
+    }
+  } else if (warmupState == 1 && numMin.val >= 15 && currentTemp > tempVar.val) {
+    tempVar.val = numSec.val % 2
+    if (tempVar.val == 0) {
+      vis warmupPic,1
+    } else {
+      vis warmupPic,0
+    }
+  } else {
+    vis warmupPic,0
+  }
+  numSec.val = systemUpTime % 60
+  numMin.val = systemUpTime / 60 % 60
+  numHour.val = systemUpTime / 3600
+  if (btnPressed.val != 0) {
+    longPressCount.val += tm0.tim
+    if (longPressCount.val >= 1000) {
+      longPressCount.val = 0
+      if (downSlot.val > 0) {
+        pId = downSlot.val
+        downSlot.val = 0
+      }
+      keybdA.loadpageid.val = 1
+      keybdA.loadcmpid.val = btnPressed.val
+      btnPressed.val = 0
+      page keybdA
+    }
+  } else {
+    longPressCount.val = 0
+  }
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on qPf1.down:
+  btnPressed.val = qPf1.id
+  downSlot.val = 1
+  longPressCount.val = 0
+
+on qPf1.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  pId = 1
+  qPf1.pic = @pic(qpf_on)
+  qPf1.pco = 63422
+  qPf2.pic = @pic(qpf_off)
+  qPf2.pco = 40213
+  qPf3.pic = @pic(qpf_off)
+  qPf3.pco = 40213
+  qPf4.pic = @pic(qpf_off)
+  qPf4.pco = 40213
+  qPf5.pic = @pic(qpf_off)
+  qPf5.pco = 40213
+  printh 23 02 54 07
+
+on qPf2.down:
+  btnPressed.val = qPf2.id
+  downSlot.val = 2
+  longPressCount.val = 0
+
+on qPf2.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  pId = 2
+  qPf2.pic = @pic(qpf_on)
+  qPf2.pco = 63422
+  qPf1.pic = @pic(qpf_off)
+  qPf1.pco = 40213
+  qPf3.pic = @pic(qpf_off)
+  qPf3.pco = 40213
+  qPf4.pic = @pic(qpf_off)
+  qPf4.pco = 40213
+  qPf5.pic = @pic(qpf_off)
+  qPf5.pco = 40213
+  printh 23 02 54 07
+
+on qPf3.down:
+  btnPressed.val = qPf3.id
+  downSlot.val = 3
+  longPressCount.val = 0
+
+on qPf3.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  pId = 3
+  qPf3.pic = @pic(qpf_on)
+  qPf3.pco = 63422
+  qPf1.pic = @pic(qpf_off)
+  qPf1.pco = 40213
+  qPf2.pic = @pic(qpf_off)
+  qPf2.pco = 40213
+  qPf4.pic = @pic(qpf_off)
+  qPf4.pco = 40213
+  qPf5.pic = @pic(qpf_off)
+  qPf5.pco = 40213
+  printh 23 02 54 07
+
+on qPf4.down:
+  btnPressed.val = qPf4.id
+  downSlot.val = 4
+  longPressCount.val = 0
+
+on qPf4.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  pId = 4
+  qPf4.pic = @pic(qpf_on)
+  qPf4.pco = 63422
+  qPf1.pic = @pic(qpf_off)
+  qPf1.pco = 40213
+  qPf2.pic = @pic(qpf_off)
+  qPf2.pco = 40213
+  qPf3.pic = @pic(qpf_off)
+  qPf3.pco = 40213
+  qPf5.pic = @pic(qpf_off)
+  qPf5.pco = 40213
+  printh 23 02 54 07
+
+on qPf5.down:
+  btnPressed.val = qPf5.id
+  downSlot.val = 5
+  longPressCount.val = 0
+
+on qPf5.up:
+  btnPressed.val = 0
+  downSlot.val = 0
+  longPressCount.val = 0
+  pId = 5
+  qPf5.pic = @pic(qpf_on)
+  qPf5.pco = 63422
+  qPf1.pic = @pic(qpf_off)
+  qPf1.pco = 40213
+  qPf2.pic = @pic(qpf_off)
+  qPf2.pco = 40213
+  qPf3.pic = @pic(qpf_off)
+  qPf3.pco = 40213
+  qPf4.pic = @pic(qpf_off)
+  qPf4.pco = 40213
+  printh 23 02 54 07

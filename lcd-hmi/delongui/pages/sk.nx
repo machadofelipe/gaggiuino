@@ -1,0 +1,482 @@
+on sk.load:
+  printh 23 02 50 02
+  soakEnabled.val = skState
+  click refUI,0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on sk.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  page home
+
+on b0.up:
+  page pi
+
+on b5.up:
+  page sk
+
+on b8.up:
+  page tp
+
+on b6.up:
+  page pf
+
+on b3.up:
+  page bS
+
+on b4.up:
+  page graphPreview
+
+on b7.up:
+  printh 23 02 54 01
+
+on soakEnabled.up:
+  skState = soakEnabled.val
+  click refUI,0
+
+on tabHold.up:
+  viewMode.val = 0
+  click refUI,0
+
+on tabTrig.up:
+  viewMode.val = 1
+  click refUI,0
+
+on refUI.up:
+  if (viewMode.val == 0) {
+    tabHold.pic = @pic(sub96_on)
+    tabHold.pco = 2178
+    tabTrig.pic = @pic(sub98_off)
+    tabTrig.pco = 40213
+    vis skTimeBg,1
+    vis t0,1
+    vis bTmM,1
+    vis bTmP,1
+    vis skTime,1
+    vis skBarBg,1
+    vis t1,1
+    vis bBrM,1
+    vis bBrP,1
+    vis skBar,1
+    vis skFlowBg,1
+    vis t2,1
+    vis bFlM,1
+    vis bFlP,1
+    vis skFlow,1
+    vis skRampBg,1
+    vis t3,1
+    vis bRmM,1
+    vis bRmP,1
+    vis skRamp,1
+    vis crvBg,1
+    vis tCrv,1
+    vis skEaseInOut,1
+    vis skEaseIn,1
+    vis skEaseOut,1
+    vis skLinear,1
+    vis skInstant,1
+    vis skWAbvBg,0
+    vis t4,0
+    vis bWaM,0
+    vis bWaP,0
+    vis skWAbv,0
+    vis skAbvBg,0
+    vis t5,0
+    vis bPaM,0
+    vis bPaP,0
+    vis skAbv,0
+    vis skBelowBg,0
+    vis t6,0
+    vis bPbM,0
+    vis bPbP,0
+    vis skBelow,0
+  } else {
+    tabTrig.pic = @pic(sub98_on)
+    tabTrig.pco = 2178
+    tabHold.pic = @pic(sub96_off)
+    tabHold.pco = 40213
+    vis skTimeBg,0
+    vis t0,0
+    vis bTmM,0
+    vis bTmP,0
+    vis skTime,0
+    vis skBarBg,0
+    vis t1,0
+    vis bBrM,0
+    vis bBrP,0
+    vis skBar,0
+    vis skFlowBg,0
+    vis t2,0
+    vis bFlM,0
+    vis bFlP,0
+    vis skFlow,0
+    vis skRampBg,0
+    vis t3,0
+    vis bRmM,0
+    vis bRmP,0
+    vis skRamp,0
+    vis crvBg,0
+    vis tCrv,0
+    vis skEaseInOut,0
+    vis skEaseIn,0
+    vis skEaseOut,0
+    vis skLinear,0
+    vis skInstant,0
+    vis skWAbvBg,1
+    vis t4,1
+    vis bWaM,1
+    vis bWaP,1
+    vis skWAbv,1
+    vis skAbvBg,1
+    vis t5,1
+    vis bPaM,1
+    vis bPaP,1
+    vis skAbv,1
+    vis skBelowBg,1
+    vis t6,1
+    vis bPbM,1
+    vis bPbP,1
+    vis skBelow,1
+  }
+  skEaseIn.val = 0
+  skEaseOut.val = 0
+  skEaseInOut.val = 0
+  skLinear.val = 0
+  skInstant.val = 0
+  if (skCrv == 1) {
+    skEaseIn.val = 1
+  } else if (skCrv == 2) {
+    skEaseOut.val = 1
+  } else if (skCrv == 0) {
+    skEaseInOut.val = 1
+  } else if (skCrv == 3) {
+    skLinear.val = 1
+  } else if (skCrv == 4) {
+    skInstant.val = 1
+  }
+  if (skState == 0) {
+    t0.pco = 17069
+    t1.pco = 17069
+    t2.pco = 17069
+    t3.pco = 17069
+    tCrv.pco = 17069
+    t4.pco = 17069
+    t5.pco = 17069
+    t6.pco = 17069
+    skTime.pco = 17069
+    skBar.pco = 17069
+    skFlow.pco = 17069
+    skRamp.pco = 17069
+    skWAbv.pco = 17069
+    skAbv.pco = 17069
+    skBelow.pco = 17069
+    skTime.pic = @pic(well_56x27_dim)
+    skBar.pic = @pic(well_56x27_dim)
+    skFlow.pic = @pic(well_56x27_dim)
+    skRamp.pic = @pic(well_56x27_dim)
+    skWAbv.pic = @pic(well_82x28_dim)
+    skAbv.pic = @pic(well_82x28_dim)
+    skBelow.pic = @pic(well_82x28_dim)
+    bTmM.pic = @pic(step34_m_dim)
+    bTmP.pic = @pic(step34_p_dim)
+    bBrM.pic = @pic(step34_m_dim)
+    bBrP.pic = @pic(step34_p_dim)
+    bFlM.pic = @pic(step34_m_dim)
+    bFlP.pic = @pic(step34_p_dim)
+    bRmM.pic = @pic(step34_m_dim)
+    bRmP.pic = @pic(step34_p_dim)
+    bWaM.pic = @pic(step_m_dim)
+    bWaP.pic = @pic(step_p_dim)
+    bPaM.pic = @pic(step_m_dim)
+    bPaP.pic = @pic(step_p_dim)
+    bPbM.pic = @pic(step_m_dim)
+    bPbP.pic = @pic(step_p_dim)
+    skEaseInOut.pic = @pic(crv22_0_dim)
+    skEaseInOut.pic2 = @pic(crv22_0_dim_on)
+    skEaseIn.pic = @pic(crv22_1_dim)
+    skEaseIn.pic2 = @pic(crv22_1_dim_on)
+    skEaseOut.pic = @pic(crv22_2_dim)
+    skEaseOut.pic2 = @pic(crv22_2_dim_on)
+    skLinear.pic = @pic(crv22_3_dim)
+    skLinear.pic2 = @pic(crv22_3_dim_on)
+    skInstant.pic = @pic(crv22_4_dim)
+    skInstant.pic2 = @pic(crv22_4_dim_on)
+    tsw skTime,0
+    tsw bTmM,0
+    tsw bTmP,0
+    tsw skBar,0
+    tsw bBrM,0
+    tsw bBrP,0
+    tsw skFlow,0
+    tsw bFlM,0
+    tsw bFlP,0
+    tsw skRamp,0
+    tsw bRmM,0
+    tsw bRmP,0
+    tsw skEaseInOut,0
+    tsw skEaseIn,0
+    tsw skEaseOut,0
+    tsw skLinear,0
+    tsw skInstant,0
+    tsw skWAbv,0
+    tsw bWaM,0
+    tsw bWaP,0
+    tsw skAbv,0
+    tsw bPaM,0
+    tsw bPaP,0
+    tsw skBelow,0
+    tsw bPbM,0
+    tsw bPbP,0
+  } else {
+    t0.pco = 40213
+    t1.pco = 40213
+    t2.pco = 40213
+    t3.pco = 40213
+    tCrv.pco = 40213
+    t4.pco = 63422
+    t5.pco = 63422
+    t6.pco = 63422
+    skTime.pco = 15871
+    skBar.pco = 62689
+    skFlow.pco = 1466
+    skRamp.pco = 15871
+    skWAbv.pco = 5584
+    skAbv.pco = 62689
+    skBelow.pco = 1466
+    skTime.pic = @pic(well_56x27)
+    skBar.pic = @pic(well_56x27)
+    skFlow.pic = @pic(well_56x27)
+    skRamp.pic = @pic(well_56x27)
+    skWAbv.pic = @pic(well_82x28)
+    skAbv.pic = @pic(well_82x28)
+    skBelow.pic = @pic(well_82x28)
+    bTmM.pic = @pic(step34_m_up)
+    bTmP.pic = @pic(step34_p_up)
+    bBrM.pic = @pic(step34_m_up)
+    bBrP.pic = @pic(step34_p_up)
+    bFlM.pic = @pic(step34_m_up)
+    bFlP.pic = @pic(step34_p_up)
+    bRmM.pic = @pic(step34_m_up)
+    bRmP.pic = @pic(step34_p_up)
+    bWaM.pic = @pic(step_m_up)
+    bWaP.pic = @pic(step_p_up)
+    bPaM.pic = @pic(step_m_up)
+    bPaP.pic = @pic(step_p_up)
+    bPbM.pic = @pic(step_m_up)
+    bPbP.pic = @pic(step_p_up)
+    skEaseInOut.pic = @pic(crv22_0_off)
+    skEaseInOut.pic2 = @pic(crv22_0_on)
+    skEaseIn.pic = @pic(crv22_1_off)
+    skEaseIn.pic2 = @pic(crv22_1_on)
+    skEaseOut.pic = @pic(crv22_2_off)
+    skEaseOut.pic2 = @pic(crv22_2_on)
+    skLinear.pic = @pic(crv22_3_off)
+    skLinear.pic2 = @pic(crv22_3_on)
+    skInstant.pic = @pic(crv22_4_off)
+    skInstant.pic2 = @pic(crv22_4_on)
+    tsw skTime,1
+    tsw bTmM,1
+    tsw bTmP,1
+    tsw skBar,1
+    tsw bBrM,1
+    tsw bBrP,1
+    tsw skFlow,1
+    tsw bFlM,1
+    tsw bFlP,1
+    tsw skRamp,1
+    tsw bRmM,1
+    tsw bRmP,1
+    tsw skEaseInOut,1
+    tsw skEaseIn,1
+    tsw skEaseOut,1
+    tsw skLinear,1
+    tsw skInstant,1
+    tsw skWAbv,1
+    tsw bWaM,1
+    tsw bWaP,1
+    tsw skAbv,1
+    tsw bPaM,1
+    tsw bPaP,1
+    tsw skBelow,1
+    tsw bPbM,1
+    tsw bPbP,1
+  }
+
+on bTmM.up:
+  if (skTime.val >= 1) {
+    skTime.val -= 1
+  } else {
+    skTime.val = 0
+  }
+
+on bTmP.up:
+  if (skTime.val <= 59) {
+    skTime.val += 1
+  } else {
+    skTime.val = 60
+  }
+
+on bBrM.up:
+  if (skBar.val >= 5) {
+    skBar.val -= 5
+  } else {
+    skBar.val = 0
+  }
+
+on bBrP.up:
+  if (skBar.val <= 115) {
+    skBar.val += 5
+  } else {
+    skBar.val = 120
+  }
+
+on bFlM.up:
+  if (skFlow.val >= 5) {
+    skFlow.val -= 5
+  } else {
+    skFlow.val = 0
+  }
+
+on bFlP.up:
+  if (skFlow.val <= 75) {
+    skFlow.val += 5
+  } else {
+    skFlow.val = 80
+  }
+
+on bRmM.up:
+  if (skRamp.val >= 1) {
+    skRamp.val -= 1
+  } else {
+    skRamp.val = 0
+  }
+
+on bRmP.up:
+  if (skRamp.val <= 59) {
+    skRamp.val += 1
+  } else {
+    skRamp.val = 60
+  }
+
+on bWaM.up:
+  if (skWAbv.val >= 10) {
+    skWAbv.val -= 10
+  } else {
+    skWAbv.val = 0
+  }
+
+on bWaP.up:
+  if (skWAbv.val <= 590) {
+    skWAbv.val += 10
+  } else {
+    skWAbv.val = 600
+  }
+
+on bPaM.up:
+  if (skAbv.val >= 5) {
+    skAbv.val -= 5
+  } else {
+    skAbv.val = 0
+  }
+
+on bPaP.up:
+  if (skAbv.val <= 115) {
+    skAbv.val += 5
+  } else {
+    skAbv.val = 120
+  }
+
+on bPbM.up:
+  if (skBelow.val >= 5) {
+    skBelow.val -= 5
+  } else {
+    skBelow.val = 0
+  }
+
+on bPbP.up:
+  if (skBelow.val <= 115) {
+    skBelow.val += 5
+  } else {
+    skBelow.val = 120
+  }
+
+on skEaseIn.down:
+  skCrv = 1
+  skEaseIn.val = 1
+  skEaseOut.val = 0
+  skEaseInOut.val = 0
+  skLinear.val = 0
+  skInstant.val = 0
+
+on skEaseOut.down:
+  skCrv = 2
+  skEaseOut.val = 1
+  skEaseIn.val = 0
+  skEaseInOut.val = 0
+  skLinear.val = 0
+  skInstant.val = 0
+
+on skEaseInOut.down:
+  skCrv = 0
+  skEaseInOut.val = 1
+  skEaseOut.val = 0
+  skEaseIn.val = 0
+  skLinear.val = 0
+  skInstant.val = 0
+
+on skLinear.down:
+  skCrv = 3
+  skLinear.val = 1
+  skEaseOut.val = 0
+  skEaseInOut.val = 0
+  skEaseIn.val = 0
+  skInstant.val = 0
+
+on skInstant.down:
+  skCrv = 4
+  skInstant.val = 1
+  skEaseOut.val = 0
+  skEaseInOut.val = 0
+  skLinear.val = 0
+  skEaseIn.val = 0
+
+on tm0.timer:
+  if (timerState == 1) {
+    page brewGraph
+  }

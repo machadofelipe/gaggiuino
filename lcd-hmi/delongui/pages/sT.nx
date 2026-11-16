@@ -1,0 +1,171 @@
+on sT.load:
+  printh 23 02 50 07
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on sT.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  page home
+
+on b1.up:
+  page sP
+
+on b4.up:
+  printh 23 02 54 01
+
+on b6.up:
+  if (setPoint.val >= 51) {
+    setPoint.val -= 1
+  } else {
+    setPoint.val = 50
+  }
+
+on b5.up:
+  if (setPoint.val <= 109) {
+    setPoint.val += 1
+  } else {
+    setPoint.val = 110
+  }
+
+on bSmM.up:
+  if (steamSetPoint.val >= 116) {
+    steamSetPoint.val -= 1
+  } else {
+    steamSetPoint.val = 115
+  }
+
+on bSmP.up:
+  if (steamSetPoint.val <= 164) {
+    steamSetPoint.val += 1
+  } else {
+    steamSetPoint.val = 165
+  }
+
+on bHpM.up:
+  if (hpwr.val >= 125) {
+    hpwr.val -= 25
+  } else {
+    hpwr.val = 100
+  }
+
+on bHpP.up:
+  if (hpwr.val <= 975) {
+    hpwr.val += 25
+  } else {
+    hpwr.val = 1000
+  }
+
+on bOfM.up:
+  if (offSet.val >= 1) {
+    offSet.val -= 1
+  } else {
+    offSet.val = 0
+  }
+
+on bOfP.up:
+  if (offSet.val <= 24) {
+    offSet.val += 1
+  } else {
+    offSet.val = 25
+  }
+
+on bMdM.up:
+  if (mDiv.val >= 2) {
+    mDiv.val -= 1
+  } else {
+    mDiv.val = 1
+  }
+
+on bMdP.up:
+  if (mDiv.val <= 19) {
+    mDiv.val += 1
+  } else {
+    mDiv.val = 20
+  }
+
+on bBdM.up:
+  if (bDiv.val >= 2) {
+    bDiv.val -= 1
+  } else {
+    bDiv.val = 1
+  }
+
+on bBdP.up:
+  if (bDiv.val <= 19) {
+    bDiv.val += 1
+  } else {
+    bDiv.val = 20
+  }
+
+on tm0.timer:
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }

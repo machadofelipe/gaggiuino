@@ -1,0 +1,311 @@
+on pf.load:
+  printh 23 02 50 03
+  profEnabled.val = ppState
+  pfType.val = ppType
+  click refUI,0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on pf.unload:
+  prevPage = dp
+  ppState = profEnabled.val
+  popupMSG.returnid.val = dp
+
+on b2.up:
+  page home
+
+on b0.up:
+  page pi
+
+on b5.up:
+  page sk
+
+on b8.up:
+  page tp
+
+on b6.up:
+  page pf
+
+on b3.up:
+  page bS
+
+on b4.up:
+  page graphPreview
+
+on b7.up:
+  printh 23 02 54 01
+
+on profEnabled.up:
+  ppState = profEnabled.val
+  click refUI,0
+
+on pfType.up:
+  ppType = pfType.val
+  printh 23 02 54 06
+  click refUI,0
+
+on refUI.up:
+  if (ppType == 0) {
+    pStartTxt.txt = "START (bar)"
+    pEndTxt.txt = "END (bar)"
+    pLimTxt.txt = "FLOW (ml/s)"
+  } else {
+    pStartTxt.txt = "START (ml/s)"
+    pEndTxt.txt = "END (ml/s)"
+    pLimTxt.txt = "PRESS (bar)"
+  }
+  pfEaseIn.val = 0
+  pfEaseOut.val = 0
+  pfEaseInOut.val = 0
+  pfLinear.val = 0
+  pfInstant.val = 0
+  if (pfCrv == 1) {
+    pfEaseIn.val = 1
+  } else if (pfCrv == 2) {
+    pfEaseOut.val = 1
+  } else if (pfCrv == 0) {
+    pfEaseInOut.val = 1
+  } else if (pfCrv == 3) {
+    pfLinear.val = 1
+  } else if (pfCrv == 4) {
+    pfInstant.val = 1
+  }
+  if (ppState == 0) {
+    pStartTxt.pco = 17069
+    pEndTxt.pco = 17069
+    tSlLbl.pco = 17069
+    pLimTxt.pco = 17069
+    tCrvHdr.pco = 17069
+    pStart.pco = 17069
+    pEnd.pco = 17069
+    pSlope.pco = 17069
+    pLim.pco = 17069
+    pStart.pic = @pic(well_56x27_dim)
+    pEnd.pic = @pic(well_56x27_dim)
+    pSlope.pic = @pic(well_56x27_dim)
+    pLim.pic = @pic(well_56x27_dim)
+    bStM.pic = @pic(step34_m_dim)
+    bStP.pic = @pic(step34_p_dim)
+    bEnM.pic = @pic(step34_m_dim)
+    bEnP.pic = @pic(step34_p_dim)
+    bSlM.pic = @pic(step34_m_dim)
+    bSlP.pic = @pic(step34_p_dim)
+    bLmM.pic = @pic(step34_m_dim)
+    bLmP.pic = @pic(step34_p_dim)
+    pfEaseInOut.pic = @pic(crv_0_dim)
+    pfEaseInOut.pic2 = @pic(crv_0_dim_on)
+    pfEaseIn.pic = @pic(crv_1_dim)
+    pfEaseIn.pic2 = @pic(crv_1_dim_on)
+    pfEaseOut.pic = @pic(crv_2_dim)
+    pfEaseOut.pic2 = @pic(crv_2_dim_on)
+    pfLinear.pic = @pic(crv_3_dim)
+    pfLinear.pic2 = @pic(crv_3_dim_on)
+    pfInstant.pic = @pic(crv_4_dim)
+    pfInstant.pic2 = @pic(crv_4_dim_on)
+    tsw pStart,0
+    tsw bStM,0
+    tsw bStP,0
+    tsw pEnd,0
+    tsw bEnM,0
+    tsw bEnP,0
+    tsw pSlope,0
+    tsw bSlM,0
+    tsw bSlP,0
+    tsw pLim,0
+    tsw bLmM,0
+    tsw bLmP,0
+    tsw pfEaseInOut,0
+    tsw pfEaseIn,0
+    tsw pfEaseOut,0
+    tsw pfLinear,0
+    tsw pfInstant,0
+  } else {
+    pStartTxt.pco = 40213
+    pEndTxt.pco = 40213
+    tSlLbl.pco = 40213
+    pLimTxt.pco = 40213
+    tCrvHdr.pco = 40213
+    if (ppType == 0) {
+      pStart.pco = 62689
+      pEnd.pco = 62689
+      pLim.pco = 1466
+    } else {
+      pStart.pco = 1466
+      pEnd.pco = 1466
+      pLim.pco = 62689
+    }
+    pSlope.pco = 15871
+    pStart.pic = @pic(well_56x27)
+    pEnd.pic = @pic(well_56x27)
+    pSlope.pic = @pic(well_56x27)
+    pLim.pic = @pic(well_56x27)
+    bStM.pic = @pic(step34_m_up)
+    bStP.pic = @pic(step34_p_up)
+    bEnM.pic = @pic(step34_m_up)
+    bEnP.pic = @pic(step34_p_up)
+    bSlM.pic = @pic(step34_m_up)
+    bSlP.pic = @pic(step34_p_up)
+    bLmM.pic = @pic(step34_m_up)
+    bLmP.pic = @pic(step34_p_up)
+    pfEaseInOut.pic = @pic(crv_0_off)
+    pfEaseInOut.pic2 = @pic(crv_0_on)
+    pfEaseIn.pic = @pic(crv_1_off)
+    pfEaseIn.pic2 = @pic(crv_1_on)
+    pfEaseOut.pic = @pic(crv_2_off)
+    pfEaseOut.pic2 = @pic(crv_2_on)
+    pfLinear.pic = @pic(crv_3_off)
+    pfLinear.pic2 = @pic(crv_3_on)
+    pfInstant.pic = @pic(crv_4_off)
+    pfInstant.pic2 = @pic(crv_4_on)
+    tsw pStart,1
+    tsw bStM,1
+    tsw bStP,1
+    tsw pEnd,1
+    tsw bEnM,1
+    tsw bEnP,1
+    tsw pSlope,1
+    tsw bSlM,1
+    tsw bSlP,1
+    tsw pLim,1
+    tsw bLmM,1
+    tsw bLmP,1
+    tsw pfEaseInOut,1
+    tsw pfEaseIn,1
+    tsw pfEaseOut,1
+    tsw pfLinear,1
+    tsw pfInstant,1
+  }
+
+on bStM.up:
+  if (pStart.val >= 5) {
+    pStart.val -= 5
+  } else {
+    pStart.val = 0
+  }
+
+on bStP.up:
+  if (pStart.val <= 115) {
+    pStart.val += 5
+  } else {
+    pStart.val = 120
+  }
+
+on bEnM.up:
+  if (pEnd.val >= 5) {
+    pEnd.val -= 5
+  } else {
+    pEnd.val = 0
+  }
+
+on bEnP.up:
+  if (pEnd.val <= 115) {
+    pEnd.val += 5
+  } else {
+    pEnd.val = 120
+  }
+
+on bSlM.up:
+  if (pSlope.val >= 1) {
+    pSlope.val -= 1
+  } else {
+    pSlope.val = 0
+  }
+
+on bSlP.up:
+  if (pSlope.val <= 89) {
+    pSlope.val += 1
+  } else {
+    pSlope.val = 90
+  }
+
+on bLmM.up:
+  if (pLim.val >= 5) {
+    pLim.val -= 5
+  } else {
+    pLim.val = 0
+  }
+
+on bLmP.up:
+  if (pLim.val <= 115) {
+    pLim.val += 5
+  } else {
+    pLim.val = 120
+  }
+
+on pfEaseIn.down:
+  pfCrv = 1
+  pfEaseIn.val = 1
+  pfEaseOut.val = 0
+  pfEaseInOut.val = 0
+  pfLinear.val = 0
+  pfInstant.val = 0
+
+on pfEaseOut.down:
+  pfCrv = 2
+  pfEaseOut.val = 1
+  pfEaseIn.val = 0
+  pfEaseInOut.val = 0
+  pfLinear.val = 0
+  pfInstant.val = 0
+
+on pfEaseInOut.down:
+  pfCrv = 0
+  pfEaseInOut.val = 1
+  pfEaseOut.val = 0
+  pfEaseIn.val = 0
+  pfLinear.val = 0
+  pfInstant.val = 0
+
+on pfLinear.down:
+  pfCrv = 3
+  pfLinear.val = 1
+  pfEaseOut.val = 0
+  pfEaseInOut.val = 0
+  pfEaseIn.val = 0
+  pfInstant.val = 0
+
+on pfInstant.down:
+  pfCrv = 4
+  pfInstant.val = 1
+  pfEaseOut.val = 0
+  pfEaseInOut.val = 0
+  pfLinear.val = 0
+  pfEaseIn.val = 0
+
+on tm0.timer:
+  if (timerState == 1) {
+    page brewGraph
+  }

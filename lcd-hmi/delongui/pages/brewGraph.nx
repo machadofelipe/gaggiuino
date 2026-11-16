@@ -1,0 +1,116 @@
+on brewGraph.load:
+  printh 23 02 50 09
+  vis dNr,0
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on brewGraph.unload:
+  prevPage = dp
+  popupMSG.returnid.val = dp
+
+on b0.up:
+  page home
+
+on b2.up:
+  printh 23 02 54 04
+  cle 1,2
+
+on tm0.timer:
+  covx currentTemp,tGauge.txt,0,0
+  covx dE.val,dNr.txt,0,0
+  tGauge.txt += "."
+  tGauge.txt += dNr.txt
+  covx weight.txt,va0.val,0,1
+  if (timerState == 1) {
+    add 1,0,pressure.val
+    add 1,1,flow.val
+    add 1,2,va0.val
+    add 1,3,currentTemp
+    p0.pic = @pic(badge_brewing)
+    vis p0,1
+  } else {
+    p0.pic = @pic(badge_done)
+    vis p0,1
+  }
+  if (targetState == 1) {
+    modeSelect = 9
+  } else if (flushState == 1) {
+    modeSelect = 5
+  } else if (descaleState == 1) {
+    modeSelect = 6
+  } else if (ppManualState == 1) {
+    modeSelect = 3
+  } else if (piState == 0 && ppState == 0) {
+    modeSelect = 0
+  } else if (piState == 1 && ppState == 0) {
+    if (piFlowState == 1) {
+      modeSelect = 7
+    } else {
+      modeSelect = 1
+    }
+  } else if (piState == 0 && ppState == 1) {
+    if (ppType == 1) {
+      modeSelect = 8
+    } else {
+      modeSelect = 2
+    }
+  } else if (piState == 1 && ppState == 1) {
+    if (piFlowState == 1 && ppType == 0) {
+      modeSelect = 10
+    } else if (piFlowState == 1 && ppType == 1) {
+      modeSelect = 11
+    } else if (piFlowState == 0 && ppType == 1) {
+      modeSelect = 12
+    } else {
+      modeSelect = 4
+    }
+  } else {
+    modeSelect = 0
+  }
+
+on brewTimer.timer:
+  if (timerState == 1) {
+    n0.val = activeBrewTime % 60
+    n1.val = activeBrewTime / 60
+  }
+
+on mode_timer.timer:
+  if (timerState == 0 && timerVar.val >= 10000 && bckHome == 1) {
+    timerVar.val = 0
+    page home
+  } else if (timerState == 0 && timerVar.val < 10000 && bckHome == 1) {
+    timerVar.val += mode_timer.tim
+  }

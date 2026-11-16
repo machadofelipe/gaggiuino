@@ -1,0 +1,612 @@
+[page]
+name = "keybdA"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "loadpageid"
+type = "variable"
+vscope = 1
+
+[[component]]
+name = "loadcmpid"
+type = "variable"
+vscope = 1
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 500
+
+[[component]]
+name = "input"
+type = "variable"
+sta = 1
+txt = ""
+txt_maxl = 24
+
+[[component]]
+name = "temp"
+type = "variable"
+
+[[component]]
+name = "inputlenth"
+type = "variable"
+
+[[component]]
+name = "tempstr"
+type = "variable"
+sta = 1
+txt_maxl = 24
+
+[[component]]
+name = "temp2"
+type = "variable"
+
+[[component]]
+name = "refshow"
+type = "hotspot"
+x = 318
+y = 2
+w = 2
+h = 2
+lockobj = 1
+
+[[component]]
+name = "b300"
+type = "button"
+x = 4
+y = 3
+w = 96
+h = 26
+sta = 2
+pic = "btn96x26_up"
+pic2 = "btn96x26_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "Load Default"
+txt_maxl = 20
+
+[[component]]
+name = "tHdr"
+type = "text"
+x = 104
+y = 6
+w = 140
+h = 20
+font = "ui12"
+bco = "#0D1117"
+pco = "#9CA3AF"
+xcen = 1
+txt = "RENAME PROFILE"
+txt_maxl = 20
+
+[[component]]
+name = "b251"
+type = "button"
+x = 254
+y = 3
+w = 62
+h = 26
+sta = 2
+pic = "btn62x26_cancel_up"
+pic2 = "btn62x26_cancel_dn"
+font = "ui12"
+pco = "#EF4444"
+pco2 = "#0D1117"
+txt = "CANCEL"
+
+[[component]]
+name = "show"
+type = "text"
+x = 4
+y = 33
+w = 312
+h = 32
+sta = 2
+pic = "well_312x32"
+font = "ui14"
+pco = "#F3F4F6"
+xcen = 1
+txt = "Profile"
+txt_maxl = 24
+
+[[component]]
+name = "b0"
+type = "button"
+x = 3
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "q"
+
+[[component]]
+name = "b1"
+type = "button"
+x = 34
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "w"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 66
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "e"
+
+[[component]]
+name = "b3"
+type = "button"
+x = 97
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "r"
+
+[[component]]
+name = "b4"
+type = "button"
+x = 129
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "t"
+
+[[component]]
+name = "b5"
+type = "button"
+x = 160
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "y"
+
+[[component]]
+name = "b6"
+type = "button"
+x = 192
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "u"
+
+[[component]]
+name = "b7"
+type = "button"
+x = 223
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "i"
+
+[[component]]
+name = "b8"
+type = "button"
+x = 255
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "o"
+
+[[component]]
+name = "b9"
+type = "button"
+x = 286
+y = 70
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "p"
+
+[[component]]
+name = "b20"
+type = "button"
+x = 3
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "a"
+
+[[component]]
+name = "b21"
+type = "button"
+x = 33
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "s"
+
+[[component]]
+name = "b22"
+type = "button"
+x = 63
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "d"
+
+[[component]]
+name = "b23"
+type = "button"
+x = 93
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "f"
+
+[[component]]
+name = "b24"
+type = "button"
+x = 123
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "g"
+
+[[component]]
+name = "b25"
+type = "button"
+x = 153
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "h"
+
+[[component]]
+name = "b26"
+type = "button"
+x = 183
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "j"
+
+[[component]]
+name = "b27"
+type = "button"
+x = 213
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "k"
+
+[[component]]
+name = "b28"
+type = "button"
+x = 243
+y = 112
+w = 29
+h = 38
+sta = 2
+pic = "ka29x38_up"
+pic2 = "ka29x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "l"
+
+[[component]]
+name = "b200"
+type = "button"
+x = 275
+y = 112
+w = 41
+h = 38
+sta = 2
+pic = "ka41x38_del_up"
+pic2 = "ka41x38_del_dn"
+font = "ui12"
+pco = "#F59E0B"
+pco2 = "#0D1117"
+txt = "DEL"
+
+[[component]]
+name = "b40"
+type = "button"
+x = 3
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "z"
+
+[[component]]
+name = "b41"
+type = "button"
+x = 31
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "x"
+
+[[component]]
+name = "b42"
+type = "button"
+x = 59
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "c"
+
+[[component]]
+name = "b43"
+type = "button"
+x = 87
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "v"
+
+[[component]]
+name = "b44"
+type = "button"
+x = 115
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "b"
+
+[[component]]
+name = "b45"
+type = "button"
+x = 143
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "n"
+
+[[component]]
+name = "b46"
+type = "button"
+x = 171
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "m"
+
+[[component]]
+name = "b232"
+type = "button"
+x = 199
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "-"
+
+[[component]]
+name = "b231"
+type = "button"
+x = 227
+y = 154
+w = 27
+h = 38
+sta = 2
+pic = "ka27x38_up"
+pic2 = "ka27x38_dn"
+font = "ui14"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "."
+
+[[component]]
+name = "b210"
+type = "button"
+x = 256
+y = 154
+w = 60
+h = 38
+sta = 2
+pic = "ka60x38_pri_up"
+pic2 = "ka60x38_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "b220"
+type = "button"
+x = 4
+y = 196
+w = 56
+h = 38
+sta = 2
+pic = "ka56x38_off"
+pic2 = "ka56x38_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "CAPS"
+
+[[component]]
+name = "b240"
+type = "button"
+x = 64
+y = 196
+w = 52
+h = 38
+sta = 2
+pic = "ka52x38_off"
+pic2 = "ka52x38_dn"
+font = "ui12"
+pco = "#F3F4F6"
+pco2 = "#0D1117"
+txt = "123"
+
+[[component]]
+name = "b242"
+type = "button"
+x = 120
+y = 196
+w = 196
+h = 38
+sta = 2
+pic = "ka196x38_up"
+pic2 = "ka196x38_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#0D1117"
+txt = "SPACE"

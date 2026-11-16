@@ -1,0 +1,520 @@
+[page]
+name = "sT"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+
+[[component]]
+name = "hdrBg"
+type = "text"
+x = 0
+y = 0
+w = 320
+h = 30
+lockobj = 1
+sta = 2
+pic = "hdr_bar"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 4
+y = 2
+w = 36
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn_back_up"
+pic2 = "btn_back_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b0"
+type = "button"
+x = 46
+y = 2
+w = 88
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab88_on"
+pic2 = "tab88_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "TEMP"
+
+[[component]]
+name = "b1"
+type = "button"
+x = 138
+y = 2
+w = 88
+h = 26
+lockobj = 1
+sta = 2
+pic = "tab88_off"
+pic2 = "tab88_dn"
+font = "ui14"
+pco = "#9CA3AF"
+pco2 = "#F3F4F6"
+txt = "SYSTEM"
+
+[[component]]
+name = "b4"
+type = "button"
+x = 244
+y = 2
+w = 72
+h = 26
+lockobj = 1
+sta = 2
+pic = "btn72_pri_up"
+pic2 = "btn72_pri_dn"
+font = "ui14"
+pco = "#0D1117"
+pco2 = "#0D1117"
+txt = "SAVE"
+
+[[component]]
+name = "setPointBg"
+type = "text"
+x = 6
+y = 38
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t3"
+type = "text"
+x = 14
+y = 43
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "BREW TEMP (°C)"
+txt_maxl = 32
+
+[[component]]
+name = "b6"
+type = "button"
+x = 11
+y = 65
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b5"
+type = "button"
+x = 117
+y = 65
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "setPoint"
+type = "number"
+vscope = 1
+x = 50
+y = 65
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#EF4444"
+val = 93
+
+[[component]]
+name = "steamSetPoinBg"
+type = "text"
+x = 162
+y = 38
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t5"
+type = "text"
+x = 170
+y = 43
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "STEAM TEMP (°C)"
+txt_maxl = 32
+
+[[component]]
+name = "bSmM"
+type = "button"
+x = 167
+y = 65
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bSmP"
+type = "button"
+x = 273
+y = 65
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "steamSetPoint"
+type = "number"
+vscope = 1
+x = 206
+y = 65
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#F59E0B"
+val = 145
+
+[[component]]
+name = "hpwrBg"
+type = "text"
+x = 6
+y = 104
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t11"
+type = "text"
+x = 14
+y = 109
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "HEATER POWER (HPWR)"
+txt_maxl = 32
+
+[[component]]
+name = "bHpM"
+type = "button"
+x = 11
+y = 131
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bHpP"
+type = "button"
+x = 117
+y = 131
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "hpwr"
+type = "number"
+vscope = 1
+x = 50
+y = 131
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#38BDF8"
+val = 550
+
+[[component]]
+name = "offSetBg"
+type = "text"
+x = 162
+y = 104
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t4"
+type = "text"
+x = 170
+y = 109
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "TEMP OFFSET (°C)"
+txt_maxl = 32
+
+[[component]]
+name = "bOfM"
+type = "button"
+x = 167
+y = 131
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bOfP"
+type = "button"
+x = 273
+y = 131
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "offSet"
+type = "number"
+vscope = 1
+x = 206
+y = 131
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#06B6D4"
+val = 7
+
+[[component]]
+name = "mDivBg"
+type = "text"
+x = 6
+y = 170
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t2"
+type = "text"
+x = 14
+y = 175
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "MAIN DIVIDER (m.Div)"
+txt_maxl = 32
+
+[[component]]
+name = "bMdM"
+type = "button"
+x = 11
+y = 197
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bMdP"
+type = "button"
+x = 117
+y = 197
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "mDiv"
+type = "number"
+vscope = 1
+x = 50
+y = 197
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#9CA3AF"
+val = 5
+
+[[component]]
+name = "bDivBg"
+type = "text"
+x = 162
+y = 170
+w = 152
+h = 62
+lockobj = 1
+sta = 2
+pic = "card_152x62"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "t8"
+type = "text"
+x = 170
+y = 175
+w = 136
+h = 16
+lockobj = 1
+font = "ui12"
+bco = "#141B24"
+pco = "#9CA3AF"
+xcen = 0
+txt = "BREW DIVIDER (b.Div)"
+txt_maxl = 32
+
+[[component]]
+name = "bBdM"
+type = "button"
+x = 167
+y = 197
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_m_up"
+pic2 = "step_m_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bBdP"
+type = "button"
+x = 273
+y = 197
+w = 36
+h = 28
+lockobj = 1
+sta = 2
+pic = "step_p_up"
+pic2 = "step_p_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "bDiv"
+type = "number"
+vscope = 1
+x = 206
+y = 197
+w = 64
+h = 28
+lockobj = 1
+sta = 2
+pic = "well_64x28"
+key = 2
+font = "ui20"
+pco = "#9CA3AF"
+val = 2
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 50

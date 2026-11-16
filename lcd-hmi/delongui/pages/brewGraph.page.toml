@@ -1,0 +1,211 @@
+[page]
+name = "brewGraph"
+type = "page"
+x = 0
+y = 0
+w = 320
+h = 240
+bco = "#0D1117"
+sta = 2
+pic = "bg_brewgraph_up"
+
+[[component]]
+name = "s0"
+type = "waveform"
+x = 19
+y = 40
+w = 282
+h = 136
+lockobj = 1
+sta = 1
+dir = 1
+ch = 4
+bco = "#0D1117"
+gdc = 6438
+gdw = 47
+gdh = 27
+pco0 = 62689
+pco1 = 1466
+pco2 = 5584
+pco3 = 59944
+dis = 140
+molloc_s = 1728
+molloc = 1728
+
+[[component]]
+name = "b0"
+type = "button"
+x = 4
+y = 2
+w = 40
+h = 28
+lockobj = 1
+sta = 0
+picc = "bg_brewgraph_up"
+picc2 = "bg_brewgraph_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "b2"
+type = "button"
+x = 276
+y = 2
+w = 40
+h = 28
+lockobj = 1
+sta = 0
+picc = "bg_brewgraph_up"
+picc2 = "bg_brewgraph_dn"
+txt = ""
+font = "ui12"
+
+[[component]]
+name = "p0"
+type = "picture"
+x = 54
+y = 5
+w = 74
+h = 24
+lockobj = 1
+pic = "badge_brewing"
+
+[[component]]
+name = "n1"
+type = "number"
+x = 150
+y = 5
+w = 32
+h = 26
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 2
+lenth = 2
+
+[[component]]
+name = "time_seconds"
+type = "text"
+x = 182
+y = 5
+w = 12
+h = 26
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#38BDF8"
+xcen = 1
+txt = ":"
+txt_maxl = 4
+
+[[component]]
+name = "n0"
+type = "number"
+x = 194
+y = 5
+w = 32
+h = 26
+lockobj = 1
+font = "ui26"
+bco = "#141B24"
+pco = "#F3F4F6"
+xcen = 0
+lenth = 2
+
+[[component]]
+name = "pressure"
+type = "xfloat"
+x = 8
+y = 207
+w = 66
+h = 26
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#F59E0B"
+xcen = 1
+vvs1 = 1
+
+[[component]]
+name = "flow"
+type = "xfloat"
+x = 87
+y = 207
+w = 66
+h = 26
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#06B6D4"
+xcen = 1
+vvs1 = 1
+
+[[component]]
+name = "weight"
+type = "text"
+x = 166
+y = 207
+w = 66
+h = 26
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#10B981"
+xcen = 1
+txt = "0.0g"
+txt_maxl = 12
+
+[[component]]
+name = "tGauge"
+type = "text"
+x = 245
+y = 207
+w = 66
+h = 26
+lockobj = 1
+font = "ui20"
+bco = "#141B24"
+pco = "#EF4444"
+xcen = 1
+txt = "0.0"
+txt_maxl = 12
+
+[[component]]
+name = "dE"
+type = "variable"
+
+[[component]]
+name = "va0"
+type = "variable"
+
+[[component]]
+name = "timerVar"
+type = "variable"
+
+[[component]]
+name = "dNr"
+type = "text"
+x = 318
+y = 238
+w = 2
+h = 2
+font = "ui12"
+bco = "#0D1117"
+pco = "#0D1117"
+txt = "0"
+
+[[component]]
+name = "tm0"
+type = "timer"
+tim = 220
+
+[[component]]
+name = "brewTimer"
+type = "timer"
+tim = 50
+
+[[component]]
+name = "mode_timer"
+type = "timer"
+tim = 50
