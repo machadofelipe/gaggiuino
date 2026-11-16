@@ -17,6 +17,18 @@ Phase presurePhaseWithWeightTarget(float start, float end, long time, float weig
   return phase;
 }
 
+Phase pressureRampPhase(float start, float end, long time, TransitionCurve curve = TransitionCurve::LINEAR) {
+  Phase phase = Phase{PHASE_TYPE::PHASE_TYPE_PRESSURE, Transition{start, end, curve, time}, 0.f, PhaseStopConditions{}};
+  phase.stopConditions.time = time;
+  return phase;
+}
+
+Phase flowRampPhase(float start, float end, long time, TransitionCurve curve = TransitionCurve::LINEAR) {
+  Phase phase = Phase{PHASE_TYPE::PHASE_TYPE_FLOW, Transition{start, end, curve, time}, 0.f, PhaseStopConditions{}};
+  phase.stopConditions.time = time;
+  return phase;
+}
+
 SensorState state;
 ShotSnapshot shotSnapshotInstance;
 ShotSnapshot& shotSnapshotAtStart = shotSnapshotInstance;
@@ -186,6 +198,33 @@ void test_phases_stay_constant() {
   TEST_ASSERT_EQUAL(2, profile.phases[1].target.end);
 }
 
+void test_zero_start_pressure_ramp_uses_explicit_zero(void) {
+  ShotSnapshot stateAtStart = ShotSnapshot{0, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+  Phase phase = pressureRampPhase(0.0f, 9.0f, 1000);
+
+  TEST_ASSERT_EQUAL_FLOAT(0.0f, phase.getTarget(0, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(4.5f, phase.getTarget(500, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(9.0f, phase.getTarget(1000, stateAtStart));
+}
+
+void test_zero_start_flow_ramp_uses_explicit_zero(void) {
+  ShotSnapshot stateAtStart = ShotSnapshot{0, 0.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+  Phase phase = flowRampPhase(0.0f, 4.0f, 1000);
+
+  TEST_ASSERT_EQUAL_FLOAT(0.0f, phase.getTarget(0, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(2.0f, phase.getTarget(500, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(4.0f, phase.getTarget(1000, stateAtStart));
+}
+
+void test_zero_start_ease_in_out_ramp_samples_curve(void) {
+  ShotSnapshot stateAtStart = ShotSnapshot{0, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+  Phase phase = pressureRampPhase(0.0f, 5.0f, 1000, TransitionCurve::EASE_IN_OUT);
+
+  TEST_ASSERT_EQUAL_FLOAT(0.0f, phase.getTarget(0, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(2.5f, phase.getTarget(500, stateAtStart));
+  TEST_ASSERT_EQUAL_FLOAT(5.0f, phase.getTarget(1000, stateAtStart));
+}
+
 void runAllPressureProfilerTests() {
   RUN_TEST(test_current_phase_calculation);
   RUN_TEST(test_get_pressure_for_phase);
@@ -195,4 +234,7 @@ void runAllPressureProfilerTests() {
   RUN_TEST(test_phases_with_weight_stop_condition);
   RUN_TEST(test_phases_with_stop_conditions_and_skipped_phases);
   RUN_TEST(test_phases_stay_constant);
+  RUN_TEST(test_zero_start_pressure_ramp_uses_explicit_zero);
+  RUN_TEST(test_zero_start_flow_ramp_uses_explicit_zero);
+  RUN_TEST(test_zero_start_ease_in_out_ramp_samples_curve);
 }

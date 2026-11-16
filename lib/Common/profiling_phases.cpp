@@ -28,7 +28,7 @@ ShotSnapshot buildShotSnapshot(uint32_t timeInShot, const SensorState& state, Cu
 //----------------------------------------------------------------------//
 float Phase::getTarget(uint32_t timeInPhase, const ShotSnapshot& stateAtStart) const {
   long transitionTime = fmax(0L, target.time);
-  float startValue = target.start > 0.f
+  float startValue = target.start >= 0.f
     ? target.start
     : type == PHASE_TYPE::PHASE_TYPE_FLOW ? stateAtStart.pumpFlow : stateAtStart.pressure;
 
